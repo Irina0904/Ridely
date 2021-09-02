@@ -61,12 +61,16 @@ Open the `server` and `client` in separate VSCode workspaces or open the combine
 
 ### Purpose
 
-2-5 sentences describing what the system does
+There are many apps that help users find a parking spot for their car. But bikes have become a very common mode of transportation in Gothenburg and there are bike parking lots all around the city. For bike lovers out there, we are creating an app that can help them find a bike parking space right at their desired destination. Not only that, the users will find bike shops and pumping stations on the map as well so that they can maintain their bike at all times.  
+
+Our web app's overall scope is based on community driven initiative, where users who enjoy biking and have suffered countless times from a lack of information regarding parking space locations now can add and save newly found parking spaces and add them to the app. 
+
 
 ### Pages
 
-* Home: 1-3 sentences describing what the page displays and what a user can do
-* Shopping cart: ...
+* Login page: Here is where all the visitors of the page will end up at first. Here the user can either register or sign in if they are an existing user.
+* Map page: The homepage loads with a map, the user's nearby location and a filtering option where the user can specify which entities they would like to see on the map.
+* User profile page: Here the user can see their credentials and log out.
 
 ### Entity-Relationship (ER) Diagram
 
