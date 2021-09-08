@@ -74,7 +74,7 @@ Our web app's overall scope is based on community driven initiative, where users
 
 ### Entity-Relationship (ER) Diagram
 
-![ER Diagram](./images/er_diagram.png)
+![ER Diagram](./images/BikeParking.drawio.png)
 
 ## Teaser (MS3)
 
