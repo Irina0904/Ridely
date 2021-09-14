@@ -5,6 +5,9 @@ var path = require('path');
 var cors = require('cors');
 var history = require('connect-history-api-fallback');
 var bikeshopcontroller = require('./controllers/bikeshops');
+var usercontroller = require('./controllers/users');
+const bodyParser = require('body-parser');
+var body_parser = require('body-parser');
 // Variables
 var mongoURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/animalDevelopmentDB';
 var port = process.env.PORT || 3000;
@@ -37,6 +40,8 @@ app.get('/api', function(req, res) {
 
 
 app.use(bikeshopcontroller);
+app.use(usercontroller);
+
 // Catch all non-error handler for api (i.e., 404 Not Found)
 app.use('/api/*', function (req, res) {
     res.status(404).json({ 'message': 'Not Found' });
