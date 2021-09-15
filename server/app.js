@@ -4,6 +4,12 @@ var morgan = require('morgan');
 var path = require('path');
 var cors = require('cors');
 var history = require('connect-history-api-fallback');
+var usercontroller = require('./controllers/users');
+var parkinglotcontroller = require('./controllers/parkinglots');
+var bikeshopcontroller = require('./controllers/bikeshops');
+const bodyParser = require('body-parser');
+var body_parser = require('body-parser');
+mongoose.set('returnOriginal', false);
 
 // Variables
 var mongoURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/animalDevelopmentDB';
@@ -17,6 +23,7 @@ mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true }, 
         process.exit(1);
     }
     console.log(`Connected to MongoDB with URI: ${mongoURI}`);
+    
 });
 
 // Create Express app
@@ -34,6 +41,10 @@ app.use(cors());
 app.get('/api', function(req, res) {
     res.json({'message': 'Welcome to your DIT341 backend ExpressJS project!'});
 });
+
+app.use(usercontroller);
+app.use(parkinglotcontroller);
+app.use(bikeshopcontroller);
 
 // Catch all non-error handler for api (i.e., 404 Not Found)
 app.use('/api/*', function (req, res) {
