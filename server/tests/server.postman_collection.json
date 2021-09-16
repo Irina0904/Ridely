@@ -46,12 +46,10 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3000/api/users/{{:id}}/bikeshops",
-							"protocol": "http",
+							"raw": "{{host}}/api/users/{{:id}}/bikeshops",
 							"host": [
-								"localhost"
+								"{{host}}"
 							],
-							"port": "3000",
 							"path": [
 								"api",
 								"users",
@@ -101,12 +99,10 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3000/api/users/{{:id}}/parkinglots",
-							"protocol": "http",
+							"raw": "{{host}}/api/users/{{:id}}/parkinglots",
 							"host": [
-								"localhost"
+								"{{host}}"
 							],
-							"port": "3000",
 							"path": [
 								"api",
 								"users",
@@ -163,12 +159,10 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3000/api/users",
-							"protocol": "http",
+							"raw": "{{host}}/api/users",
 							"host": [
-								"localhost"
+								"{{host}}"
 							],
-							"port": "3000",
 							"path": [
 								"api",
 								"users"
@@ -203,12 +197,10 @@
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/api/users",
-							"protocol": "http",
+							"raw": "{{host}}/api/users",
 							"host": [
-								"localhost"
+								"{{host}}"
 							],
-							"port": "3000",
 							"path": [
 								"api",
 								"users"
@@ -247,12 +239,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/api/users/{{:id}}/additions/{{:additions_id}}",
-							"protocol": "http",
+							"raw": "{{host}}/api/users/{{:id}}/additions/{{:additions_id}}",
 							"host": [
-								"localhost"
+								"{{host}}"
 							],
-							"port": "3000",
 							"path": [
 								"api",
 								"users",
@@ -293,12 +283,10 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/api/users/{{:id}}/additions/{{:additions_id}}",
-							"protocol": "http",
+							"raw": "{{host}}/api/users/{{:id}}/additions/{{:additions_id}}",
 							"host": [
-								"localhost"
+								"{{host}}"
 							],
-							"port": "3000",
 							"path": [
 								"api",
 								"users",
@@ -348,12 +336,10 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3000/api/users/{{:id}}",
-							"protocol": "http",
+							"raw": "{{host}}/api/users/{{:id}}",
 							"host": [
-								"localhost"
+								"{{host}}"
 							],
-							"port": "3000",
 							"path": [
 								"api",
 								"users",
@@ -400,12 +386,10 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3000/api/users/{{:id}}",
-							"protocol": "http",
+							"raw": "{{host}}/api/users/{{:id}}",
 							"host": [
-								"localhost"
+								"{{host}}"
 							],
-							"port": "3000",
 							"path": [
 								"api",
 								"users",
@@ -439,12 +423,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/api/bikeshops",
-							"protocol": "http",
+							"raw": "{{host}}/api/bikeshops",
 							"host": [
-								"localhost"
+								"{{host}}"
 							],
-							"port": "3000",
 							"path": [
 								"api",
 								"bikeshops"
@@ -481,12 +463,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/api/bikeshops/{{:_id}}",
-							"protocol": "http",
+							"raw": "{{host}}/api/bikeshops/{{:_id}}",
 							"host": [
-								"localhost"
+								"{{host}}"
 							],
-							"port": "3000",
 							"path": [
 								"api",
 								"bikeshops",
@@ -524,12 +504,10 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3000/api/bikeshops",
-							"protocol": "http",
+							"raw": "{{host}}/api/bikeshops",
 							"host": [
-								"localhost"
+								"{{host}}"
 							],
-							"port": "3000",
 							"path": [
 								"api",
 								"bikeshops"
@@ -576,12 +554,10 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3000/api/bikeshops/{{:id}}",
-							"protocol": "http",
+							"raw": "{{host}}/api/bikeshops/{{:id}}",
 							"host": [
-								"localhost"
+								"{{host}}"
 							],
-							"port": "3000",
 							"path": [
 								"api",
 								"bikeshops",
@@ -628,12 +604,10 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3000/api/bikeshops/{{:id}}",
-							"protocol": "http",
+							"raw": "{{host}}/api/bikeshops/{{:id}}",
 							"host": [
-								"localhost"
+								"{{host}}"
 							],
-							"port": "3000",
 							"path": [
 								"api",
 								"bikeshops",
@@ -662,12 +636,10 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/api/bikeshops",
-							"protocol": "http",
+							"raw": "{{host}}/api/bikeshops",
 							"host": [
-								"localhost"
+								"{{host}}"
 							],
-							"port": "3000",
 							"path": [
 								"api",
 								"bikeshops"
@@ -705,12 +677,10 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/api/bikeshops/{{:id}}",
-							"protocol": "http",
+							"raw": "{{host}}/api/bikeshops/{{:id}}",
 							"host": [
-								"localhost"
+								"{{host}}"
 							],
-							"port": "3000",
 							"path": [
 								"api",
 								"bikeshops",
@@ -744,12 +714,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/api/parkinglots",
-							"protocol": "http",
+							"raw": "{{host}}/api/parkinglots",
 							"host": [
-								"localhost"
+								"{{host}}"
 							],
-							"port": "3000",
 							"path": [
 								"api",
 								"parkinglots"
@@ -786,12 +754,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/api/parkinglots/{{:_id}}",
-							"protocol": "http",
+							"raw": "{{host}}/api/parkinglots/{{:_id}}",
 							"host": [
-								"localhost"
+								"{{host}}"
 							],
-							"port": "3000",
 							"path": [
 								"api",
 								"parkinglots",
@@ -829,12 +795,10 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3000/api/parkinglots",
-							"protocol": "http",
+							"raw": "{{host}}/api/parkinglots",
 							"host": [
-								"localhost"
+								"{{host}}"
 							],
-							"port": "3000",
 							"path": [
 								"api",
 								"parkinglots"
@@ -850,7 +814,7 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
-									"pm.globals.set(\":_id\", \"6141ba131fcc31d0362f67fe\");"
+									"pm.globals.set(\":_id\", \"6141b419ed614dce266b8493\");"
 								],
 								"type": "text/javascript"
 							}
@@ -872,7 +836,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n        \"address\": {\n            \"city\": \"gbg\",\n            \"street\": \"street\",\n            \"zip_code\": \"345678\"\n        },\n        \"_id\": \"6141ba131fcc31d0362f67fe\",\n        \"__v\": 0\n    }",
+							"raw": "{\n    \"_id\": \"6141b419ed614dce266b8493\",\n    \"address\":{\n        \"city\": \"gbg\",\n        \"street\": \"street\",\n        \"zip_code\": \"64679\"}\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -880,12 +844,10 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3000/api/parkinglots/{{:_id}}",
-							"protocol": "http",
+							"raw": "{{host}}/api/parkinglots/{{:_id}}",
 							"host": [
-								"localhost"
+								"{{host}}"
 							],
-							"port": "3000",
 							"path": [
 								"api",
 								"parkinglots",
@@ -902,7 +864,7 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
-									"pm.globals.set(\":_id\", \"6141ba131fcc31d0362f67fe\");"
+									"pm.globals.set(\":_id\", \"6141b419ed614dce266b8493\");"
 								],
 								"type": "text/javascript"
 							}
@@ -924,7 +886,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n        \"address\": {\n            \"city\": \"gbg\",\n            \"street\": \"street\",\n            \"zip_code\": \"345678\"\n        },\n        \"_id\": \"6141ba131fcc31d0362f67fe\",\n        \"__v\": 0\n    }",
+							"raw": "{\n    \"_id\": \"6141b419ed614dce266b8493\",\n    \"address\":{\n        \"city\": \"gbg\",\n        \"street\": \"gata\",\n        \"zip_code\": \"876543\"}\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -932,12 +894,10 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3000/api/parkinglots/{{:_id}}",
-							"protocol": "http",
+							"raw": "{{host}}/api/parkinglots/{{:_id}}",
 							"host": [
-								"localhost"
+								"{{host}}"
 							],
-							"port": "3000",
 							"path": [
 								"api",
 								"parkinglots",
@@ -965,7 +925,7 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
-									"pm.globals.set(\":_id\", \"6141ba231fcc31d0362f6800\");"
+									"pm.globals.set(\":_id\", \"6141b419ed614dce266b8493\");"
 								],
 								"type": "text/javascript"
 							}
@@ -1016,319 +976,13 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/api/parkinglots",
-							"protocol": "http",
+							"raw": "{{host}}/api/parkinglots",
 							"host": [
-								"localhost"
+								"{{host}}"
 							],
-							"port": "3000",
 							"path": [
 								"api",
 								"parkinglots"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "PUMPSTATION",
-			"item": [
-				{
-					"name": "POST NEW PUMPSTATION",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 201\", function () {\r",
-									"    pm.response.to.have.status(201);\r",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"sthlmpump\",\r\n    \"address\": {\"city\": \"Stockholm\", \"street\": \"Vasagatan\", \"zipcode\": \"3551\"},\r\n    \"rating\": \"5\",\r\n    \"added_by\": \"613dfd94c9d242386c80d241\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:3000/api/pumpstations",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"api",
-								"pumpstations"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "GET ALL PUMPSTATIONS",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:3000/api/pumpstations",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"api",
-								"pumpstations"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "GET SPECIFIC PUMPSTATION",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"exec": [
-									"pm.globals.set(\":id\", \"6141bbdcf47d5963f071ec21\");"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:3000/api/pumpstations/{{:id}}",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"api",
-								"pumpstations",
-								"{{:id}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "DELETE ALL PUMPSTATIONS",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 204\", function () {\r",
-									"    pm.response.to.have.status(204);\r",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:3000/api/pumpstations",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"api",
-								"pumpstations"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "DELETE SPECIFIC PUMPSTATION",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"exec": [
-									"pm.globals.set(\":id\", \"6141bfd5f47d5963f071ec2f\");"
-								],
-								"type": "text/javascript"
-							}
-						},
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 204\", function () {\r",
-									"    pm.response.to.have.status(204);\r",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:3000/api/pumpstations/{{:id}}",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"api",
-								"pumpstations",
-								"{{:id}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "PUT SPECIFIC PUMPSTATION",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"exec": [
-									"pm.globals.set(\":id\", \"6142033a27154949181ad177\");"
-								],
-								"type": "text/javascript"
-							}
-						},
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"elbruspump\",\r\n    \"address\": {\"city\": \"Stockholm\", \"street\": \"Vasagatan\", \"zipcode\": \"3551\"},\r\n    \"rating\": \"4\",\r\n    \"added_by\": \"613dfd94c9d242386c80d241\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:3000/api/pumpstations/{{:id}}",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"api",
-								"pumpstations",
-								"{{:id}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "PATCH SPECIFIC PUMPSTATION",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"exec": [
-									"pm.globals.set(\":id\", \"6142033a27154949181ad177\");"
-								],
-								"type": "text/javascript"
-							}
-						},
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "PATCH",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"islandpeakpump\",\r\n    \"address\": {\"city\": \"Stockholm\", \"street\": \"Vasagatan\", \"zipcode\": \"3551\"},\r\n    \"rating\": \"3\",\r\n    \"added_by\": \"613dfd94c9d242386c80d241\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:3000/api/pumpstations/{{:id}}",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"api",
-								"pumpstations",
-								"{{:id}}"
 							]
 						}
 					},
@@ -1367,12 +1021,10 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3000/api/bike_service_tools",
-							"protocol": "http",
+							"raw": "{{host}}/api/bike_service_tools",
 							"host": [
-								"localhost"
+								"{{host}}"
 							],
-							"port": "3000",
 							"path": [
 								"api",
 								"bike_service_tools"
@@ -1400,12 +1052,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/api/bike_service_tools",
-							"protocol": "http",
+							"raw": "{{host}}/api/bike_service_tools",
 							"host": [
-								"localhost"
+								"{{host}}"
 							],
-							"port": "3000",
 							"path": [
 								"api",
 								"bike_service_tools"
@@ -1449,12 +1099,10 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://localhost:3000/api/bike_service_tools/{{:id}}",
-							"protocol": "http",
+							"raw": "{{host}}/api/bike_service_tools/{{:id}}",
 							"host": [
-								"localhost"
+								"{{host}}"
 							],
-							"port": "3000",
 							"path": [
 								"api",
 								"bike_service_tools",
@@ -1483,12 +1131,10 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/api/bike_service_tools",
-							"protocol": "http",
+							"raw": "{{host}}/api/bike_service_tools",
 							"host": [
-								"localhost"
+								"{{host}}"
 							],
-							"port": "3000",
 							"path": [
 								"api",
 								"bike_service_tools"
@@ -1516,12 +1162,10 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/api/bike_service_tools",
-							"protocol": "http",
+							"raw": "{{host}}/api/bike_service_tools",
 							"host": [
-								"localhost"
+								"{{host}}"
 							],
-							"port": "3000",
 							"path": [
 								"api",
 								"bike_service_tools"
@@ -1567,12 +1211,10 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3000/api/bike_service_tools/{{:id}}",
-							"protocol": "http",
+							"raw": "{{host}}/api/bike_service_tools/{{:id}}",
 							"host": [
-								"localhost"
+								"{{host}}"
 							],
-							"port": "3000",
 							"path": [
 								"api",
 								"bike_service_tools",
@@ -1619,15 +1261,303 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3000/api/bike_service_tools/{{:id}}",
-							"protocol": "http",
+							"raw": "{{host}}/api/bike_service_tools/{{:id}}",
 							"host": [
-								"localhost"
+								"{{host}}"
 							],
-							"port": "3000",
 							"path": [
 								"api",
 								"bike_service_tools",
+								"{{:id}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "PUMPSTATION",
+			"item": [
+				{
+					"name": "POST NEW PUMPSTATION",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"shshs\",\r\n    \"address\": {\"city\": \"Stockholm\", \"street\": \"Vasagatan\", \"zipcode\": \"3551\"},\r\n    \"rating\": \"5\",\r\n    \"added_by\": \"613dfd94c9d242386c80d241\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/pumpstations",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"pumpstations"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET ALL PUMPSTATIONS",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/pumpstations",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"pumpstations"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET SPECIFIC PUMPSTATION",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.globals.set(\":id\", \"6141bbdcf47d5963f071ec21\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/pumpstations/{{:id}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"pumpstations",
+								"{{:id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE ALL PUMPSTATIONS",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 204\", function () {\r",
+									"    pm.response.to.have.status(204);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/pumpstations",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"pumpstations"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE SPECIFIC PUMPSTATION",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.globals.set(\":id\", \"6141bfd5f47d5963f071ec2f\");"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 204\", function () {\r",
+									"    pm.response.to.have.status(204);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/pumpstations/{{:id}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"pumpstations",
+								"{{:id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT SPECIFIC PUMPSTATION",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.globals.set(\":id\", \"6142033a27154949181ad177\");"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"elbruspump\",\r\n    \"address\": {\"city\": \"Stockholm\", \"street\": \"Vasagatan\", \"zipcode\": \"3551\"},\r\n    \"rating\": \"4\",\r\n    \"added_by\": \"613dfd94c9d242386c80d241\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/pumpstations/{{:id}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"pumpstations",
+								"{{:id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PATCH SPECIFIC PUMPSTATION",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.globals.set(\":id\", \"6142033a27154949181ad177\");"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"islandpeakpump\",\r\n    \"address\": {\"city\": \"Stockholm\", \"street\": \"Vasagatan\", \"zipcode\": \"3551\"},\r\n    \"rating\": \"3\",\r\n    \"added_by\": \"613dfd94c9d242386c80d241\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/pumpstations/{{:id}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"pumpstations",
 								"{{:id}}"
 							]
 						}
