@@ -6,7 +6,7 @@ var Pumpstation = require('../models/pumpstation');
     router.post('/api/pumpstations', function(req, res, next){
         var pumpstation = new Pumpstation(req.body);
         pumpstation.save(function(err, pumpstation) {
-            if (err) { return next(err); }
+            if (err) { res.status(404).json(); }
             res.status(201).json(pumpstation);
         })
     });
@@ -15,7 +15,7 @@ var Pumpstation = require('../models/pumpstation');
     
         Pumpstation.find({}, function(err, result) {
             if (err) {
-              console.log(err);
+              res.status(404).json();
             } else {
               res.json(result);
             }
@@ -26,7 +26,7 @@ var Pumpstation = require('../models/pumpstation');
     
             Pumpstation.findOne({_id: req.params.pumpstation_id}, function(err, result) {
                 if (err) {
-                  console.log(err);
+                  res.status(404).json();
                 } else {
                   res.status(200).json(result);
                 }
@@ -51,7 +51,7 @@ var Pumpstation = require('../models/pumpstation');
                     req.body, {new: true},
                 function(err, result) {
                     if (err) {
-                      console.log(err);
+                      res.status(404).json();
                     } else {
                       res.json(result);
                     }
@@ -60,14 +60,14 @@ var Pumpstation = require('../models/pumpstation');
     
     router.delete('/api/pumpstations', function(req, res, next){
         Pumpstation.remove({}, function(err, pumpstation) {
-            if (err) { return next(err); }
+            if (err) { res.status(404).json(); }
             res.status(204).json(pumpstation);
         })
     });
     
     router.delete('/api/pumpstations/:pumpstation_id', function(req, res, next){
         Pumpstation.remove({ _id: req.params.pumpstation_id }, function(err, pumpstation) {
-            if (err) { return next(err); }
+            if (err) { res.status(404).json(); }
             res.status(204).json(pumpstation);
         })
     });
