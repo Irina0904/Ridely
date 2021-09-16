@@ -3,7 +3,6 @@ const app = require('../app');
 var router = express.Router();
 var Bikeshop = require('../models/bikeshop');
 var mongoose = require('mongoose');
-var url = require('url');
 
 
 
