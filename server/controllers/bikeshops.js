@@ -1,7 +1,7 @@
 var express = require('express');
 const app = require('../app');
 var router = express.Router();
-var Bikeshop = require('../models/bikeshops');
+var Bikeshop = require('../models/bikeshop');
 var mongoose = require('mongoose');
 
 //POST
@@ -20,17 +20,29 @@ router.post('/api/bikeshops', function(req, res, next){
 
 //GET ALL
 router.get('/api/bikeshops', function(req, res, next){
-    
-    Bikeshop.find({}, function(err, result) {
-        if (err) {
-          console.log(err);
-        } else {
-          res.status(200).json(result);
-        }
-      });
-    
-       
-});
+          try{
+              var query = Bikeshop.find();
+  
+          for (var fieldName in req.query)
+          {
+              if(req.query.hasOwnProperty(fieldName))
+              {
+                  if(req.query[fieldName])
+                  {
+                      query.where(fieldName).equals(req.query[fieldName]);
+                  }
+              }
+          }
+  
+          query.exec(function(err,data){
+              if(err) { return next(err); }
+              res.status(200).json(data)
+          });
+      }catch(error){
+          res.status(404).json()
+      }
+  
+  });
 
 //DELETE ALL
 router.delete('/api/bikeshops', function(req, res, next){

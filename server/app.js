@@ -7,6 +7,8 @@ var history = require('connect-history-api-fallback');
 var usercontroller = require('./controllers/users');
 var parkinglotcontroller = require('./controllers/parkinglots');
 var bikeshopcontroller = require('./controllers/bikeshops');
+var bike_service_toolcontroller = require('./controllers/bike_service_tools');
+var pumpstationcontroller = require('./controllers/pumpstations');
 const bodyParser = require('body-parser');
 var body_parser = require('body-parser');
 mongoose.set('returnOriginal', false);
@@ -45,6 +47,8 @@ app.get('/api', function(req, res) {
 app.use(usercontroller);
 app.use(parkinglotcontroller);
 app.use(bikeshopcontroller);
+app.use(bike_service_toolcontroller);
+app.use(pumpstationcontroller);
 
 // Catch all non-error handler for api (i.e., 404 Not Found)
 app.use('/api/*', function (req, res) {

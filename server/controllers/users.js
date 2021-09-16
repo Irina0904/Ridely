@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var User = require('../models/users');
+var User = require('../models/user');
 const app = require('../app');
 var bodyParser = require('body-parser')
 var mongoose = require('mongoose');
@@ -15,6 +15,32 @@ router.post('/api/users', function(req, res, next){
         if (err) { return next(err); }
         res.status(201).json(users)
     })
+});
+
+router.post('/api/users/:id/bikeshops', function(req, res, next){
+
+    User.findOneAndUpdate({_id: req.params.id}, {$push: {'additions': mongoose.Types.ObjectId(req.body.bikeshop_id)}}, function(err, result){
+        if(err) {
+            res.status(404).json()
+        }else{
+            res.status(201).json(result);
+        }
+
+    })
+
+});
+
+router.post('/api/users/:id/parkinglots', function(req, res, next){
+
+    User.findOneAndUpdate({_id: req.params.id}, {$push: {'additions': mongoose.Types.ObjectId(req.body.parking_lotId)}}, function(err, result){
+        if(err) {
+            res.status(404).json()
+        }else{
+            res.status(201).json(result);
+        }
+
+    })
+
 });
 
 router.delete('/api/users', function(req, res, next){

@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var Parkinglots = require('../models/parkinglots');
+var Parkinglots = require('../models/parkinglot');
 
 
 //POST
