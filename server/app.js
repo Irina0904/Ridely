@@ -6,6 +6,8 @@ var cors = require('cors');
 var history = require('connect-history-api-fallback');
 var bikeshopcontroller = require('./controllers/bikeshops');
 var usercontroller = require('./controllers/users');
+var parkinglotcontroller = require('./controllers/parkinglots');
+var pumpstation = require('./controllers/pumpstations');
 const bodyParser = require('body-parser');
 var body_parser = require('body-parser');
 // Variables
@@ -41,6 +43,8 @@ app.get('/api', function(req, res) {
 
 app.use(bikeshopcontroller);
 app.use(usercontroller);
+app.use(parkinglotcontroller);
+app.use(pumpstation);
 
 // Catch all non-error handler for api (i.e., 404 Not Found)
 app.use('/api/*', function (req, res) {

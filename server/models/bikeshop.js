@@ -4,12 +4,16 @@ var Schema = mongoose.Schema;
 
 var bikeshopSchema = new Schema({
     name:{type: String},
-    adress: {type: String},
+    address:{
+        city: String,
+        street: String,
+        zip_code: String},
     rating: {type: Number},
     added_by: {type: Schema.Types.ObjectId, ref: 'users'}
 
 }, 
 { collection: "bikeshops_collection" });
+
 
 const Bikeshop = module.exports = mongoose.model('bikeshop', bikeshopSchema);
 

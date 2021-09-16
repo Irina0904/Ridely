@@ -5,8 +5,10 @@ var Schema = mongoose.Schema;
 var userSchema = new Schema({
     name: {type: String},
     email: {type: String},
+    example: {type: String},
     //registration_date: {type: Date.now().String},
-    additions: {type: [Schema.Types.ObjectId]}
+    additions: {type: [Schema.Types.ObjectId]},
+
     
 
 

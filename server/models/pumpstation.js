@@ -4,7 +4,10 @@ var Schema = mongoose.Schema;
 
 var pumpstationSchema = new Schema({
     name:{type: String},
-    address: {type: String},
+    address:{
+        city: String,
+        street: String,
+        zip_code: String},
     rating: {type: Number}
 
 });
