@@ -8,6 +8,7 @@ var bikeshopcontroller = require('./controllers/bikeshops');
 var usercontroller = require('./controllers/users');
 var bike_service_toolcontroller = require('./controllers/bike_service_tools');
 var pumpstationcontroller = require('./controllers/pumpstations');
+var parkinglotcontroller = require('./controllers/parkinglots');
 
 // Variables
 var mongoURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/animalDevelopmentDB';
@@ -43,6 +44,7 @@ app.use(bikeshopcontroller);
 app.use(usercontroller);
 app.use(bike_service_toolcontroller);
 app.use(pumpstationcontroller);
+app.use(parkinglotcontroller);
 
 // Catch all non-error handler for api (i.e., 404 Not Found)
 app.use('/api/*', function (req, res) {
