@@ -1,14 +1,28 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Home</router-link>
-    </div>
+      <router-link to="/login-panel" tag="Login">Login</router-link>
+      </div>
     <!-- Render the content of the current page view -->
     <router-view/>
   </div>
 </template>
 
+<script>
+// import UserLogo from './components/UserLogo.vue'
+
+export default {
+  components: {
+    // Define the name of the component here
+    // 'user-Logo': UserLogo,
+    // 'login-view': LoginView
+
+  }
+}
+</script>
+
 <style>
+
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

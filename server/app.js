@@ -9,8 +9,7 @@ var parkinglotcontroller = require('./controllers/parkinglots');
 var bikeshopcontroller = require('./controllers/bikeshops');
 var bike_service_toolcontroller = require('./controllers/bike_service_tools');
 var pumpstationcontroller = require('./controllers/pumpstations');
-const bodyParser = require('body-parser');
-var body_parser = require('body-parser');
+var bp = require('body-parser');
 mongoose.set('returnOriginal', false);
 
 // Variables
@@ -33,6 +32,7 @@ var app = express();
 // Parse requests of content-type 'application/json'
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
 // HTTP request logger
 app.use(morgan('dev'));
 // Enable cross-origin resource sharing for frontend must be registered before api
