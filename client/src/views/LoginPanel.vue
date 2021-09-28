@@ -1,5 +1,5 @@
 <template>
-<div class="columns" id="login-panel">
+<div class="columns" v:bind:key="login-panel">
     <div class="column is-two-thirds">
       <section class="section">
         <h1 class="title">Login</h1>
@@ -9,7 +9,7 @@
           <div class="field">
             <label class="label">Email</label>
             <div class="control">
-              <input v-model="email" class="input" :bind:key="email" type="text" placeholder="Text input">
+              <input v-model="email" class="input" v:bind:key="email" type="text" placeholder="Text input">
             </div>
           </div>
           <div class="field">
@@ -19,27 +19,32 @@
             </div>
           </div>
           <button type="submit" class="btn btn-primary" @click="Submit()">Submit</button>
-          <div>
-      <h3>Data retrieved from server:</h3>
-            <pre>{{ response }}</pre>
+          </section>
+    </section><p>
+      {{ response }}</p>
+      <div>
+        <h1 v-if="Verified"><button type="button" @click="dataTransfer">Go to user page</button></h1>
       </div>
-        </section>
-    </section>
       </div>
       </div>
 </template>
 
 <script>
 import axios from 'axios'
-
+import { serverBus } from '../serverBus.js'
 export default {
+  el: '#login-panel',
+  components: {
+  },
+  props: ['userInfo'],
   data() {
     return {
       email: '',
       succes: '',
       password: '',
       Verified: false,
-      response: ''
+      response: '',
+      user: {}
     }
   },
   methods: {
@@ -49,15 +54,24 @@ export default {
         password: this.password
       }).then((res) => {
         if (res.status === 200) {
-          this.verified = true
-          this.response = 'Login successful'
-          this.$router.push({ name: 'users', params: { id: res._id } })
+          this.Verified = true
+          this.response = res.data
+          this.user = res.data
+        } else {
+          this.response = 'Login Failed. Please try again'
+          console.log(this.response)
         }
       })
         .catch((error) => {
+          this.response = 'Login Failed. Please try again'
           console.log(error)
         }).finally(() => {
         })
+    },
+    dataTransfer: function () {
+      console.log(this.user)
+      serverBus.$emit('userSelected', this.user)
+      this.$router.push({ name: 'users' })
     }
   }
 }

@@ -10,7 +10,6 @@
 
 <script>
 // import UserLogo from './components/UserLogo.vue'
-
 export default {
   components: {
     // Define the name of the component here

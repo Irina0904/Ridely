@@ -172,7 +172,6 @@ router.post('/api/login',  function(req, res, next){
             res.status(404).json()
         }
         if(result){
-            console.log(req.body)
             res.status(200).json(result)
         }else{
             res.status(404).json()

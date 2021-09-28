@@ -23,7 +23,7 @@
 
         <form class="form-horizontal" role="form">
             <div class="form-group">
-            <label class="col-lg-3 control-label">First name</label>
+            <label v:bind:key="user" class="col-lg-3 control-label">{{user}}</label>
             <div class="col-lg-8">
             <input class="form-control" type="text" value='first name'>
             </div>
@@ -55,18 +55,24 @@
 </div>
 
 </template>
-
 <script>
+
 // @ is an alias to /src
-import { Api } from '@/Api'
+import axios from 'axios'
+import { serverBus } from '../serverBus.js'
+
 export default {
-  name: 'User',
+  components: {
+  },
+  props: ['userInfo'],
   data() {
-    //  userInfo: []
+    return {
+      user: {}
+    }
   },
   methods: {
     Updateprofile() {
-      Api.patch('/users/:id')
+      axios.patch('/users/:id')
         .then(response => {
           this.message = response.data.message
         })
@@ -76,6 +82,10 @@ export default {
     }
   }
 }
+const created = function (user) {
+  this.user = user
+}
+serverBus.$on('userSelected', created)
 </script>
 
 <style scoped>
