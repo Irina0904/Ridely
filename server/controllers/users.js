@@ -109,18 +109,18 @@ router.put('/api/users/:id', function(req, res, next){
     });
 });
  //PATCH
-router.patch('/api/users/:id', function(req, res, next){
+ router.patch('/api/users/:id', function(req, res, next){
 
-User.findOneAndUpdate({_id: req.params.id}, 
-    req.body, {new: true},
-function(err, result) {
-    if (err) {
-      console.log(err);
-    } else {
-      res.status(200).json(result);
-    }
-  });
-});
+    User.findByIdAndUpdate({_id: req.params.id}, 
+        req.body, {new: true},
+    function(err, result) {
+        if (err) {
+          console.log(err);
+        } else {
+          res.status(200).json(result);
+        }
+      });
+    });
 
 router.get('/api/users/:id/additions/:additions_id', function(req, res, next){
     User.find({_id: req.params.id}, {additions: req.params.additions_id},  function(err, result){

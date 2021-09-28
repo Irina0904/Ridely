@@ -2,10 +2,12 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var userSchema = new Schema({
-    user_id: Schema.Types.ObjectId,
-    gmail: String,
-    password: String
+    name: {type: String},
+    email: {type: String},
+    //registration_date: {type: Date.now().String},
+    additions: {type: [Schema.Types.ObjectId]}
 
 });
 
-module.exports = mongoose.model('users', userSchema);
+const User = module.exports = mongoose.model('user', userSchema);
+

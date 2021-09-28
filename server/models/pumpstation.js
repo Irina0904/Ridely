@@ -12,4 +12,6 @@ var pumpstationSchema = new Schema({
 
 });
 
+pumpstationSchema.index({'$**': 'text'});
+
 module.exports = mongoose.model('pumpstations', pumpstationSchema);
