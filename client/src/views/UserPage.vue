@@ -1,109 +1,115 @@
 <template>
-  <div id="userInfo">
-    <div class="container bootstrap snippets bootdey">
-      <h1 class="text-primary">
-        <span class="glyphicon glyphicon-user"></span>Edit Profile
-      </h1>
-      <hr />
-      <div class="row">
+<div id="userInfo">
+<div class="container bootstrap snippets bootdey">
+    <h1 class="text-primary"><span class="glyphicon glyphicon-user"></span>Edit Profile</h1>
+        <hr>
+    <div class="row" v:bind="user">
         <!-- left column -->
         <div class="col-md-3">
-          <div class="text-center">
-            <img
-              src="//placehold.it/100"
-              class="avatar img-circle"
-              alt="avatar"
-            />
+        <div class="text-center">
+            <img src="//placehold.it/100" class="avatar img-circle" alt="avatar">
             <h6>Upload a different photo...</h6>
-            <input type="file" class="form-control" />
-          </div>
-        </div>
-        <!-- edit form column -->
-        <div class="col-md-9 personal-info">
-          <div class="alert alert-info alert-dismissable">
+            <input type="file" class="form-control">
+            </div>
+            </div>
+            <!-- edit form column -->
+            <div class="col-md-9 personal-info">
+            <div class="alert alert-info alert-dismissable">
             <a class="panel-close close" data-dismiss="alert">×</a>
             <i class="fa fa-coffee"></i>
             <strong></strong>Don't forget to confirm changes.
-          </div>
-          <h3>Personal info</h3>
+            </div>
+            <h3>Personal info</h3>
 
-          <form class="form-horizontal" role="form">
-            <div class="form-group">
-              <label v:bind:key="user" class="col-lg-3 control-label">{{
-                user
-              }}</label>
-              <div class="col-lg-8">
-                <input class="form-control" type="text" value="first name" />
-              </div>
+        <form class="form-horizontal" role="form">
+            <div class="form-group" >
+            <label class="col-lg-3 control-label">{{ user.firstName }}</label>
+            <div class="col-lg-8">
+            <input class="form-control" type="text" value='first name'>
+            </div>
             </div>
             <div class="form-group">
-              <label class="col-lg-3 control-label">last name:</label>
-              <div class="col-lg-8">
-                <input class="form-control" type="text" value="last name" />
-              </div>
+            <label class="col-lg-3 control-label">{{ user.lastName }}</label>
+            <div class="col-lg-8">
+              <input v:bind="user" class="form-control" type="text" value="last name">
             </div>
-            <div class="form-group">
-              <label class="col-lg-3 control-label">Email:</label>
-              <div class="col-lg-8">
-                <input class="form-control" type="text" value="" />
-              </div>
+          </div>
+          <div class="form-group">
+            <label class="col-lg-3 control-label" value="email">{{ user.email }}</label>
+            <div class="col-lg-8">
+              <input class="form-control" type="text" value="">
             </div>
-            <div class="form-group">
-              <label class="col-lg-3 control-label">Password:</label>
-              <div class="col-lg-8">
-                <input
-                  class="form-control"
-                  type="text"
-                  value="janesemail@gmail.com"
-                />
-              </div>
+          </div>
+          <div class="form-group">
+            <label class="col-lg-3 control-label">Password:</label>
+            <div class="col-lg-8">
+              <input class="form-control" type="text">
             </div>
-            <b-button
-              class="btn_message"
-              variant="primary"
-              v-on:click="getMessage()"
-              >Confirm changes</b-button
-            >
-          </form>
-        </div>
+          </div>
+                <b-button class="btn_message" variant="primary" @click="getMessage()" >Confirm changes</b-button>
+                <b-button class="btn_message" variant="danger" @click="deletAccount()">Delete Account</b-button>
+                <div v-if="deleted"><h1>User Account Deleted</h1></div>
+
+        </form>
       </div>
-    </div>
   </div>
+</div>
+</div>
+
 </template>
+
 <script>
+
 // @ is an alias to /src
 import axios from 'axios'
-import { serverBus } from '../serverBus.js'
+// import { serverBus } from '../main.js'
 
 export default {
-  components: {},
-  props: ['userInfo'],
-  data() {
+  props: ['userInfos'],
+  data: function () {
     return {
-      user: {}
+      user: {
+        firstName: ''
+      },
+      deleted: false
     }
   },
   methods: {
     Updateprofile() {
-      axios
-        .patch('/users/:id')
+      axios.patch('/users/:id')
         .then(response => {
-          this.message = response.data.message
+          this.message = response.data
         })
         .catch(error => {
           this.message = error
         })
+    },
+    deletAccount() {
+      axios.delete('http://localhost:3000/api/users', { params: { _id: this.$route.params._id } })
+        .then(response => {
+          this.deleted = true
+        })
+        .catch(error => {
+          console.log('failed to get user data', error)
+        })
     }
+  },
+  created: function () {
+    axios.get('http://localhost:3000/api/users', { params: { _id: this.$route.params._id } })
+      .then(response => {
+        this.user = response.data[0]
+        console.log(this.user + 'hejj')
+      })
+      .catch(error => {
+        console.log('failed to get user data', error)
+      })
   }
 }
-const created = function (user) {
-  this.user = user
-}
-serverBus.$on('userSelected', created)
+
 </script>
 
 <style scoped>
-body {
-  margin-top: 20px;
+body{
+    margin-top: 20px;
 }
 </style>
