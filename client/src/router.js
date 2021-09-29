@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Home from './views/Home.vue'
 import UserPage from './views/UserPage.vue'
 import LoginPanel from './views/LoginPanel.vue'
+import CreateAccount from './views/CreateAccount.vue'
 
 Vue.use(Router)
 
@@ -23,6 +24,12 @@ export default new Router({
     {
       path: '/login-panel',
       component: LoginPanel
+    },
+    {
+      path: '/create-account',
+      name: 'create-account',
+      component: CreateAccount
     }
+
   ]
 })

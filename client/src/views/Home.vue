@@ -1,9 +1,16 @@
 <template>
-<div>
-    <b-jumbotron header="DIT341 hhh" lead="Welcome to your DIT341 Frontend Vue.js App">
-      <b-button class="btn_message" variant="primary" v-on:click="getMessage()" >Get Message from Server</b-button>
-      <p>Message from the server:<br/>
-      {{ message }}</p>
+  <div>
+    <b-jumbotron
+      header="DIT341 hhh"
+      lead="Welcome to your DIT341 Frontend Vue.js App"
+    >
+      <b-button class="btn_message" variant="primary" v-on:click="getMessage()"
+        >Get Message from Server</b-button
+      >
+      <p>
+        Message from the server:<br />
+        {{ message }}
+      </p>
     </b-jumbotron>
   </div>
 </template>
@@ -31,7 +38,6 @@ export default {
     }
   }
 }
-
 </script>
 
 <style>

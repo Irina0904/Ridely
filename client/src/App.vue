@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/login-panel" tag="Login">Login</router-link>
+      <router-link to="/login-panel" tag="Login">Login</router-link>|
+      <router-link to="/create-account">Create Account</router-link>|
+      <router-link to="/user-profile">UserProfile</router-link>|
       </div>
     <!-- Render the content of the current page view -->
     <router-view/>
