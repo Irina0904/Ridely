@@ -9,6 +9,7 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 Vue.use(BootstrapVue)
 
 Vue.config.productionTip = false
+export const serverBus = new Vue()
 
 new Vue({
   router,

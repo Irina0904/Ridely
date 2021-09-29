@@ -46,14 +46,35 @@ router.post('/api/users/:id/parkinglots', function(req, res, next){
 });
 
 router.delete('/api/users', function(req, res, next){
-    User.remove({}, function(err, users) {
-        if (err) { return next(err); }
-        res.status(204).json(users);
-    })
+    try{
+        var query = User.find();
+
+    for (var fieldName in req.query)
+    {
+        if(req.query.hasOwnProperty(fieldName))
+        {
+            if(req.query[fieldName])
+            {
+                query.where(fieldName).equals(req.query[fieldName]);
+            }
+        }
+    }
+    query.remove(function(err,data){
+        if(err) { 
+            res.status(404)
+        } else {
+        res.status(204)
+        }
+    });
+    }catch(error){
+    res.status(404).json()
+    }
+
+  
 });
 
-router.delete('/api/users/:id', function(req, res, next){
-    User.remove({ _id: req.params.id }, function(err, users) {
+router.delete('/api/users/:_id', function(req, res, next){
+    User.remove({ _id: req.params._id }, function(err, users) {
         if (err) { return next(err); }
         res.status(204).json(users);
     })
@@ -61,16 +82,29 @@ router.delete('/api/users/:id', function(req, res, next){
 
 router.get('/api/users', function(req, res, next){
     
-    User.find({}, function(err, result) {
-        if (err) {
-          console.log(err);
-        } else {
-          res.status(200).json(result);
+    try{
+        var query = User.find();
+
+    for (var fieldName in req.query)
+    {
+        if(req.query.hasOwnProperty(fieldName))
+        {
+            if(req.query[fieldName])
+            {
+                query.where(fieldName).equals(req.query[fieldName]);
+            }
         }
-      });
-    
-       
-});
+    }
+
+    query.exec(function(err,data){
+        if(err) { return next(err); }
+        res.status(200).json(data)
+    });
+}catch(error){
+    res.status(404).json()
+}
+
+    });
 
 router.post('/api/users/:id/bikeshop', function(req, res, next){
 
