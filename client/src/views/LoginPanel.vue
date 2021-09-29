@@ -31,9 +31,8 @@
 
 <script>
 import axios from 'axios'
-import { serverBus } from '../serverBus.js'
+// import { serverBus } from '../main.js'
 export default {
-  el: '#login-panel',
   components: {
   },
   props: ['userInfo'],
@@ -70,8 +69,7 @@ export default {
     },
     dataTransfer: function () {
       console.log(this.user)
-      serverBus.$emit('userSelected', this.user)
-      this.$router.push({ name: 'users' })
+      this.$router.push({ name: 'users', params: { _id: this.user._id } })
     }
   }
 }
