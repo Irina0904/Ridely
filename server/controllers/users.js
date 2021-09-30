@@ -199,6 +199,32 @@ router.get('/api/users/:id/additions/:additions_id', function(req, res, next){
 
 });
 
+router.get('/api/users/:id/additions', function(req, res, next){
+
+    try{
+        var query = User.find({_id: req.params.id}).select({ "additions":1, "_id":0});
+
+    for (var fieldName in req.query)
+    {
+        if(req.query.hasOwnProperty(fieldName))
+        {
+            if(req.query[fieldName])
+            {
+                query.where(fieldName).equals(req.query[fieldName]);
+            }
+        }
+    }
+
+    query.exec(function(err,data){
+        if(err) { return next(err); }
+        res.status(200).json(data)
+    });
+}catch(error){
+    res.status(404).json()
+}
+
+});
+
 router.delete('/api/users/:id/additions/:additions_id', function(req, res, next){
     User.findOneAndUpdate({_id: req.params.id}, {$unset:{ additions:{ObjectId: req.params.additions_id}}},  function(err, result){
         if(err) {

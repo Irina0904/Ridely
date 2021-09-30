@@ -1,6 +1,7 @@
 <template>
 <div id="userInfo">
 <div class="container bootstrap snippets bootdey">
+  <b-button class="btn_message" variant="primary" @click="dataTransfer">Home</b-button>
     <h1 class="text-primary"><span class="glyphicon glyphicon-user"></span>Edit Profile</h1>
         <hr>
     <div class="row" v:bind="user">
@@ -51,6 +52,8 @@
                 <div v-if="deleted"><h1>User Account Deleted</h1></div>
 
         </form>
+        <b-button class="btn_message" variant="primary" @click="getAdditions()" >Show additions</b-button>
+        <p>{{additions}}</p>
       </div>
   </div>
 </div>
@@ -62,6 +65,7 @@
 
 // @ is an alias to /src
 import axios from 'axios'
+import { Api } from '@/Api'
 // import { serverBus } from '../main.js'
 
 export default {
@@ -71,7 +75,8 @@ export default {
       user: {
         firstName: ''
       },
-      deleted: false
+      deleted: false,
+      additions: []
     }
   },
   methods: {
@@ -88,6 +93,21 @@ export default {
       axios.delete('http://localhost:3000/api/users', { params: { _id: this.$route.params._id } })
         .then(response => {
           this.deleted = true
+        })
+        .catch(error => {
+          console.log('failed to get user data', error)
+        })
+    },
+    dataTransfer: function () {
+      console.log(this.user)
+      this.$router.push({ name: 'search_id', params: { _id: this.user._id } })
+    },
+    getAdditions() {
+      const userID = this.$route.params._id
+      Api.get('http://localhost:3000/api/users/' + userID + '/additions')
+        .then(response => {
+          console.log(response.data)
+          this.additions = response.data
         })
         .catch(error => {
           console.log('failed to get user data', error)

@@ -7,11 +7,11 @@
        </router-link></template>
 <script>
 export default {
-    methods:{
-        isLoggedIn() {
-            
-        }
+  methods: {
+    isLoggedIn() {
+
     }
+  }
 }
 </script>
 <style scoped>
