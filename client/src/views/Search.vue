@@ -3,13 +3,14 @@
     <div>
   <!-- As a link -->
   <b-navbar variant="dark" type="dark">
-    <b-navbar-brand to="/home">Home</b-navbar-brand>
+    <b-navbar-brand to="/search">Ridely</b-navbar-brand>
     <b-nav-form>
       <b-form-input class="mr-sm-2" input type="text" v-model="search"
       placeholder="Search"></b-form-input>
-      <b-button variant="outline-success" class="my-2 my-sm-0" @click="showModal">Add
-          <BIconPlusCircle/></b-button>
     </b-nav-form>
+     <b-button variant="outline-success" class="my-2 my-sm-0" @click="showModal">Add
+          <BIconPlusCircle/></b-button>&nbsp;&nbsp;
+          <b-button to="/login-panel" variant="success" class="my-2 my-sm-0">Login</b-button>
   </b-navbar>
 </div>
 <div>
@@ -41,8 +42,8 @@
 
 <script>
 import BikeshopItem from '../components/BikeshopItem.vue'
-import { Api } from '@/Api'
 import { BIconPlusCircle } from 'bootstrap-vue'
+import { Api } from '@/Api'
 export default {
   name: 'bikeshops',
   components: {
@@ -51,9 +52,9 @@ export default {
   },
   mounted() {
     console.log('PAGE is loaded!')
-    Api.get('/bikeshops')
+    Api.get('http://localhost:3000/api/bikeshops')
       .then(response => {
-        console.log(response)
+        console.log(response.data)
         this.bikeshops = response.data
         console.log(this.bikeshops)
       })
@@ -69,11 +70,11 @@ export default {
   data() {
     return {
       bikeshops: [],
-      search: '',
       message: '',
       form: {
         bikeshopName: ''
-      }
+      },
+      search: ''
     }
   },
   methods: {
@@ -82,8 +83,11 @@ export default {
     },
     addLocation() {
       const userID = this.$route.params._id
-      Api.post('http://localhost:3000/api/users/' + userID + '/bikeshops',
-        { name: this.form.bikeshopName })
+      Api.post('http://localhost:3000/api/bikeshops',
+        {
+          name: this.form.bikeshopName,
+          added_by: userID
+        })
         .then(response => {
           console.log(response.data)
         })
@@ -103,7 +107,8 @@ export default {
           if (Object.values(bikeshop).includes(this.search)) {
             searchResults.push(bikeshop)
             this.message = ''
-          } else if (Object.values(bikeshop.address).includes(this.search)) {
+          } else if (bikeshop.address &&
+              Object.values(bikeshop.address).includes(this.search)) {
             searchResults.push(bikeshop)
             this.message = ''
           } else if (searchResults.length === 0) {

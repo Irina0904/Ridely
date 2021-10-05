@@ -7,8 +7,10 @@
     <b-card-text>
       <h2>{{bikeshop.name}}</h2>
       <p>{{bikeshop.owner}}</p>
-      <p>{{bikeshop.address.city}}</p>
-      <p>{{bikeshop.address.street}}</p>
+      <p v-if="bikeshop.address && bikeshop.address.city">{{bikeshop.address.city}}</p>
+      <p v-else></p>
+      <p v-if="bikeshop.address && bikeshop.address.street">{{bikeshop.address.street}}</p>
+      <p v-else></p>
       <p>Rating: {{ bikeshop.rating }}</p>
     </b-card-text>
     <div>
@@ -27,7 +29,8 @@ export default {
   props: ['bikeshop'],
   data() {
     return {
-      name: 'bikeshop.name'
+      name: 'bikeshop.name',
+      city: 'bikeshop.address.city'
     }
   }
 }

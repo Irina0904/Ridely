@@ -1,11 +1,23 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/home">Home</router-link>|
-      <router-link to="/login-panel">Login</router-link>|
-      <router-link to="/create-account">Create Account</router-link>|
-       <router-link to="/search">Search</router-link>|
+  <div>
+    <b-modal ref="addLocation-modal" hide-footer title="Add a new location">
+      <div class="d-block text-center">
+         <b-form>
+              <b-form-group>
+
+          <b-form-input
+          v-model="form.bikeshopName"
+            placeholder="Location name"
+            required
+          ></b-form-input>
+      </b-form-group>
+          </b-form>
       </div>
+       <b-button class="mt-3" variant="success" block @click="addLocation">Add</b-button>
+      <b-button class="mt-2" block @click="toggleModal">Cancel</b-button>
+    </b-modal>
+  </div>
     <!-- Render the content of the current page view -->
     <router-view/>
     </div>
@@ -13,12 +25,39 @@
 
 <script>
 // import UserLogo from './components/UserLogo.vue'
+import { Api } from '@/Api'
 export default {
   el: '#app',
   components: {
     // Define the name of the component here
     // 'user-Logo': UserLogo,
     // 'login-view': LoginView
+  },
+  data() {
+    return {
+      form: {
+        bikeshopName: ''
+      }
+    }
+  },
+  methods: {
+    showModal() {
+      this.$refs['addLocation-modal'].show()
+    },
+    addLocation() {
+      const userID = this.$route.params._id
+      Api.post('http://localhost:3000/api/bikeshops',
+        {
+          name: this.form.bikeshopName,
+          added_by: userID
+        })
+        .then(response => {
+          console.log(response.data)
+        })
+        .catch(error => {
+          console.log('failed to get user data', error)
+        })
+    }
   }
 }
 </script>

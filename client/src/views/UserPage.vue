@@ -1,18 +1,22 @@
 <template>
+
 <div id="userInfo">
+  <b-navbar variant="dark" type="dark">
+    <b-navbar-brand :to="{ name: 'search_id', params: { _id: this.user._id } }">Ridely</b-navbar-brand>
+  </b-navbar>
 <div class="container bootstrap snippets bootdey">
-  <b-button class="btn_message" variant="primary" @click="dataTransfer">Home</b-button>
-    <h1 class="text-primary"><span class="glyphicon glyphicon-user"></span>Edit Profile</h1>
+    <h1 class="text-primary"><span class="glyphicon glyphicon-user"></span>My Account</h1>
         <hr>
     <div class="row" v:bind="user">
         <!-- left column -->
-        <div class="col-md-3">
-        <div class="text-center">
-            <img src="//placehold.it/100" class="avatar img-circle" alt="avatar">
-            <h6>Upload a different photo...</h6>
-            <input type="file" class="form-control">
-            </div>
-            </div>
+        <div>
+  <b-nav vertical class="w-25">
+    <b-nav-item :to="{ name: 'my_additions', params: { _id: this.user._id } }">User additions</b-nav-item>
+    <b-nav-item>Link</b-nav-item>
+    <b-nav-item>Another Link</b-nav-item>
+    <b-nav-item disabled>Disabled</b-nav-item>
+  </b-nav>
+</div>
             <!-- edit form column -->
             <div class="col-md-9 personal-info">
             <div class="alert alert-info alert-dismissable">
@@ -47,13 +51,15 @@
               <input class="form-control" type="text">
             </div>
           </div>
-                <b-button class="btn_message" variant="primary" @click="getMessage()" >Confirm changes</b-button>
-                <b-button class="btn_message" variant="danger" @click="deletAccount()">Delete Account</b-button>
-                <div v-if="deleted"><h1>User Account Deleted</h1></div>
+                <b-button class="btn_message" variant="primary" @click="Updateprofile()" >Confirm changes</b-button>&nbsp;
+                <b-button class="btn_message" variant="danger" @click="deletAccount()">Delete Account</b-button>&nbsp;
+                <b-button class="btn_message" variant="danger" @click="resetAccount()">Reset Account</b-button>
+
+               <div v-if="deleted"><h1>User Account Deleted</h1></div>
+                <div v-if="updated"><h1>User Account Updated</h1></div>
+                <div v-if="reseted"><h1>User Account Reseted</h1></div>
 
         </form>
-        <b-button class="btn_message" variant="primary" @click="getAdditions()" >Show additions</b-button>
-        <p>{{additions}}</p>
       </div>
   </div>
 </div>
@@ -73,17 +79,28 @@ export default {
   data: function () {
     return {
       user: {
-        firstName: ''
       },
       deleted: false,
-      additions: []
+      additions: [],
+      updated: false,
+      reseted: false
+
     }
   },
   methods: {
     Updateprofile() {
-      axios.patch('/users/:id')
+      const id = this.$route.params._id
+      axios.patch('http://localhost:3000/api/users/' + id, {
+        firstName: this.user.firstName,
+        lastName: this.user.lastName,
+        email: this.user.email,
+        password: this.user.password
+      })
         .then(response => {
-          this.message = response.data
+          if (response.status === 200) {
+            this.updated = true
+            this.created()
+          }
         })
         .catch(error => {
           this.message = error
@@ -102,17 +119,21 @@ export default {
       console.log(this.user)
       this.$router.push({ name: 'search_id', params: { _id: this.user._id } })
     },
-    getAdditions() {
+    resetAccount() {
       const userID = this.$route.params._id
-      Api.get('http://localhost:3000/api/users/' + userID + '/additions')
+      Api.put('http://localhost:3000/api/users/' + userID, {
+        _id: userID,
+        email: this.user.email,
+        password: this.user.password
+      })
         .then(response => {
-          console.log(response.data)
-          this.additions = response.data
+          this.reseted = true
         })
         .catch(error => {
           console.log('failed to get user data', error)
         })
     }
+
   },
   created: function () {
     axios.get('http://localhost:3000/api/users', { params: { _id: this.$route.params._id } })

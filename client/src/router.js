@@ -5,6 +5,7 @@ import UserPage from './views/UserPage.vue'
 import LoginPanel from './views/LoginPanel.vue'
 import CreateAccount from './views/CreateAccount.vue'
 import Search from './views/Search.vue'
+import UserAdditions from './views/UserAdditions.vue'
 
 Vue.use(Router)
 
@@ -40,6 +41,11 @@ export default new Router({
       path: '/search/:_id',
       name: 'search_id',
       component: Search
+    },
+    {
+      path: '/myadditions/:_id',
+      name: 'my_additions',
+      component: UserAdditions
     }
 
   ]

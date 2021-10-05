@@ -1,8 +1,13 @@
 <template>
   <div>
+    <b-navbar variant="dark" type="dark">
+    <b-navbar-brand to="/search">Ridely</b-navbar-brand>
+  </b-navbar>
+  <div id="login-container"><br>
     <b-form @submit="onSubmit" @reset="onReset" v-if="show">
+      <b-row class="justify-content-md-center">
       <b-form-group>
-        <b-col sm="2">
+        <b-col>
           <b-form-input
             v-model="form.firstName"
             placeholder="First name"
@@ -10,9 +15,11 @@
           ></b-form-input>
         </b-col>
       </b-form-group>
+      </b-row>
 
+<b-row class="justify-content-md-center">
       <b-form-group>
-        <b-col sm="2">
+        <b-col>
           <b-form-input
             v-model="form.lastName"
             placeholder="Last name"
@@ -20,9 +27,11 @@
           ></b-form-input>
         </b-col>
       </b-form-group>
+</b-row>
 
+<b-row class="justify-content-md-center">
       <b-form-group>
-        <b-col sm="2">
+        <b-col>
           <b-form-input
             v-model="form.email"
             type="email"
@@ -31,9 +40,11 @@
           ></b-form-input>
         </b-col>
       </b-form-group>
+</b-row>
 
+<b-row class="justify-content-md-center">
       <b-form-group>
-        <b-col sm="2">
+        <b-col>
           <b-form-input
             v-model="form.password"
             type="password"
@@ -42,12 +53,16 @@
           ></b-form-input>
         </b-col>
       </b-form-group>
+</b-row>
 
+<b-row class="justify-content-md-center">
       <b-btn-toolbar>
-        &nbsp;<b-button type="submit" variant="primary">Submit</b-button>&nbsp;
+        &nbsp;<b-button type="submit" variant="outline-success">Submit</b-button>&nbsp;
         <b-button type="reset" variant="danger">Reset</b-button>
       </b-btn-toolbar>
+</b-row>
     </b-form>
+  </div>
   </div>
 </template>
 
@@ -114,5 +129,19 @@ export default {
   top: 50%;
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
+}
+#login-container{
+ background-color: rgb(38, 39, 46);
+  width: 300px;
+  height: 300px;
+  color: white;
+  border-radius: 5px;
+  text-align: center;
+  align-items: center;
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 10vh;
+  margin-bottom: 10vh;
 }
 </style>
