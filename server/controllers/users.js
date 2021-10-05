@@ -73,23 +73,25 @@ router.delete('/api/users', function(req, res, next){
   
 });
 
-router.delete('/api/users/:_id', function(req, res, next){
-    User.remove({ _id: req.params._id }, function(err, users) {
-        if (err) { return next(err); }
-        res.status(204).json(users);
+router.delete('/api/users/:id', function(req, res, next){
+    User.remove({ _id: req.params.id }, function(err, users) {
+        if (err) { 
+            res.status(400).json()
+        }
+        else {
+        res.status(204).json(users) 
+    }
     })
 });
 
 router.get('/api/users', function(req, res, next){
-    
     try{
         var query = User.find();
-
     for (var fieldName in req.query)
     {
         if(req.query.hasOwnProperty(fieldName))
         {
-            if(req.query[fieldName])
+        if(req.query[fieldName])
             {
                 query.where(fieldName).equals(req.query[fieldName]);
             }
@@ -151,7 +153,7 @@ User.findByIdAndUpdate({_id: req.params.id},
     req.body, {new: true},
 function(err, result) {
     if (err) {
-      console.log(err);
+      res.status(404).json()
     } else {
       res.status(200).json(result);
     }

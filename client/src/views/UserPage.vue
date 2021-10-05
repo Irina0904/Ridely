@@ -26,32 +26,37 @@
             <div class="form-group" >
             <label class="col-lg-3 control-label">{{ user.firstName }}</label>
             <div class="col-lg-8">
-            <input class="form-control" type="text" value='first name'>
+            <input v-model="user.firstName" class="form-control" type="text" value='first name'>
             </div>
             </div>
             <div class="form-group">
             <label class="col-lg-3 control-label">{{ user.lastName }}</label>
             <div class="col-lg-8">
-              <input v:bind="user" class="form-control" type="text" value="last name">
+              <input v-model="user.lastName"  class="form-control" type="text" value="last name">
             </div>
           </div>
           <div class="form-group">
             <label class="col-lg-3 control-label" value="email">{{ user.email }}</label>
             <div class="col-lg-8">
-              <input class="form-control" type="text" value="">
+              <input v-model="user.email" class="form-control" type="text" value="">
             </div>
           </div>
           <div class="form-group">
             <label class="col-lg-3 control-label">Password:</label>
             <div class="col-lg-8">
-              <input class="form-control" type="text">
+              <input v-model="user.password"  class="form-control" type="text">
             </div>
           </div>
-                <b-button class="btn_message" variant="primary" @click="getMessage()" >Confirm changes</b-button>
+                <b-button class="btn_message" variant="primary" @click="Updateprofile()">Confirm changes</b-button>
                 <b-button class="btn_message" variant="danger" @click="deletAccount()">Delete Account</b-button>
+                <b-button class="btn_message" variant="danger" @click="resetAccount()">Reset Account</b-button>
+
                 <div v-if="deleted"><h1>User Account Deleted</h1></div>
+                <div v-if="updated"><h1>User Account Updated</h1></div>
+                <div v-if="reseted"><h1>User Account Reseted</h1></div>
 
         </form>
+
         <b-button class="btn_message" variant="primary" @click="getAdditions()" >Show additions</b-button>
         <p>{{additions}}</p>
       </div>
@@ -73,17 +78,27 @@ export default {
   data: function () {
     return {
       user: {
-        firstName: ''
       },
       deleted: false,
-      additions: []
+      additions: [],
+      updated: false,
+      reseted: false
     }
   },
   methods: {
     Updateprofile() {
-      axios.patch('/users/:id')
+      const id = this.$route.params._id
+      axios.patch('http://localhost:3000/api/users/' + id, {
+        firstName: this.user.firstName,
+        lastName: this.user.lastName,
+        email: this.user.email,
+        password: this.user.password
+      })
         .then(response => {
-          this.message = response.data
+          if (response.status === 200) {
+            this.updated = true
+            this.created()
+          }
         })
         .catch(error => {
           this.message = error
@@ -112,13 +127,27 @@ export default {
         .catch(error => {
           console.log('failed to get user data', error)
         })
+    },
+    resetAccount() {
+      const userID = this.$route.params._id
+      Api.put('http://localhost:3000/api/users/' + userID, {
+        _id: userID,
+        email: this.user.email,
+        password: this.user.password
+      })
+        .then(response => {
+          this.reseted = true
+        })
+        .catch(error => {
+          console.log('failed to get user data', error)
+        })
     }
   },
   created: function () {
-    axios.get('http://localhost:3000/api/users', { params: { _id: this.$route.params._id } })
+    const id = this.$route.params._id
+    axios.get('http://localhost:3000/api/users/' + id)
       .then(response => {
         this.user = response.data[0]
-        console.log(this.user + 'hejj')
       })
       .catch(error => {
         console.log('failed to get user data', error)
