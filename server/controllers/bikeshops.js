@@ -18,31 +18,63 @@ router.post('/api/bikeshops', function(req, res, next){
     })
 });
 
-//GET ALL
 router.get('/api/bikeshops', function(req, res, next){
-          try{
-              var query = Bikeshop.find();
-  
-          for (var fieldName in req.query)
-          {
-              if(req.query.hasOwnProperty(fieldName))
-              {
-                  if(req.query[fieldName])
-                  {
-                      query.where(fieldName).equals(req.query[fieldName]);
-                  }
-              }
-          }
-  
-          query.exec(function(err,data){
-              if(err) { return next(err); }
-              res.status(200).json(data)
-          });
-      }catch(error){
-          res.status(404).json()
-      }
-  
-  });
+    
+    // GET URL : http://localhost:3000/api/bikeshops?adress=mingata20
+    
+            try{
+                var query = Bikeshop.find();
+    
+            for (var fieldName in req.query)
+            {
+                if(req.query.hasOwnProperty(fieldName))  
+                {
+                    if(req.query[fieldName])  
+                    {
+                        query.where(fieldName).equals(req.query[fieldName]);
+                    }
+                }
+            }
+            
+            query.exec(function(err,data){
+                if(err) { return next(err); }
+                res.status(200).json(data)
+            });  
+        }catch(error){
+            res.status(404).json()
+        }
+           
+});
+    
+router.get('/api/bikeshops/:user_id', function(req, res, next){
+    
+    // GET URL : http://localhost:3000/api/bikeshops?adress=mingata20
+    
+            try{
+                var query = Bikeshop.find({added_by: req.params.user_id});
+    
+            for (var fieldName in req.query)
+            {
+                if(req.query.hasOwnProperty(fieldName))  
+                {
+                    if(req.query[fieldName])  
+                    {
+                        query.where(fieldName).equals(req.query[fieldName]);
+                    }
+                }
+            }
+            
+            query.exec(function(err,data){
+                if(err) { return next(err); }
+                res.status(200).json(data)
+            });  
+        }catch(error){
+            res.status(404).json()
+        }
+           
+    });
+    
+    
 
 //DELETE ALL
 router.delete('/api/bikeshops', function(req, res, next){

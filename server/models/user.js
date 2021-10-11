@@ -2,8 +2,10 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var userSchema = new Schema({
-    name: {type: String},
+    firstName: {type: String},
+    lastName: {type: String},
     email: {type: String},
+    password: {type: String},
     //registration_date: {type: Date.now().String},
     additions: {type: [Schema.Types.ObjectId]}
     
