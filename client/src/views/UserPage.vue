@@ -2,7 +2,7 @@
 
 <div id="userInfo">
   <b-navbar variant="dark" type="dark">
-    <b-navbar-brand :to="{ name: 'search_id', params: { _id: this.user._id } }">Ridely</b-navbar-brand>
+    <b-navbar-brand :to="{ name: 'search_id', params: { _id: this.user._id } }">Ridely.</b-navbar-brand>
   </b-navbar>
 <div class="container bootstrap snippets bootdey">
     <h1 class="text-primary"><span class="glyphicon glyphicon-user"></span>My Account</h1>
@@ -48,7 +48,7 @@
           <div class="form-group">
             <label class="col-lg-3 control-label">Password:</label>
             <div class="col-lg-8">
-              <input v-model="user.password"  class="form-control" type="text">
+              <input v-model="user.password"  class="form-control" type="password">
             </div>
           </div>
 

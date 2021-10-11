@@ -1,7 +1,7 @@
 <template>
   <div>
     <b-navbar variant="dark" type="dark">
-    <b-navbar-brand to="/search">Ridely</b-navbar-brand>
+    <b-navbar-brand to="/search">Ridely.</b-navbar-brand>
   </b-navbar>
   <div id="login-container"><br>
     <b-form @submit="onSubmit" @reset="onReset" v-if="show">

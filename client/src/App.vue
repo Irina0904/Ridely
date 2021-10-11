@@ -24,7 +24,7 @@
 </template>
 
 <script>
-// import UserLogo from './components/UserLogo.vue'
+
 import { Api } from '@/Api'
 export default {
   el: '#app',
@@ -65,7 +65,8 @@ export default {
 <style>
 
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: 'Termina', Helvetica, Arial, sans-serif;
+  letter-spacing: -1px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;

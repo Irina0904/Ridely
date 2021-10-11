@@ -2,8 +2,8 @@
   <div>
     <div>
   <!-- As a link -->
-  <b-navbar variant="dark" type="dark">
-    <b-navbar-brand to="/search">Ridely</b-navbar-brand>
+  <b-navbar class="fixed-top" variant="dark" type="dark">
+    <b-navbar-brand to="/search">Ridely.</b-navbar-brand>
     <b-nav-form>
       <b-form-input class="mr-sm-2" input type="text" v-model="search"
       placeholder="Search"></b-form-input>
@@ -12,6 +12,9 @@
           <BIconPlusCircle/></b-button>&nbsp;&nbsp;
           <b-button to="/login-panel" variant="success" class="my-2 my-sm-0">Login</b-button>
   </b-navbar>
+</div>
+<div class="map">
+  <map-page/>
 </div>
 <div>
     <b-modal ref="addLocation-modal" hide-footer title="Add a new location">
@@ -31,7 +34,7 @@
       <b-button class="mt-2" block @click="toggleModal">Cancel</b-button>
     </b-modal>
 </div>
-<div v-for="bikeshop in filteredBikeshops" v-bind:key="bikeshop._id">
+<div id="bikeshop" v-for="bikeshop in filteredBikeshops" v-bind:key="bikeshop._id">
             <bikeshop-item v-bind:bikeshop="bikeshop"/>
         </div>
          <div>
@@ -43,13 +46,16 @@
 <script>
 import BikeshopItem from '../components/BikeshopItem.vue'
 import { BIconPlusCircle } from 'bootstrap-vue'
+import Map from '../components/Map'
 import { Api } from '@/Api'
 export default {
-  name: 'bikeshops',
+  name: 'bikeshops, testMap',
   components: {
+    'map-page': Map,
     'bikeshop-item': BikeshopItem,
     BIconPlusCircle
   },
+
   mounted() {
     console.log('PAGE is loaded!')
     Api.get('http://localhost:3000/api/bikeshops')
@@ -104,11 +110,7 @@ export default {
       const searchResults = []
       if (this.search) {
         this.bikeshops.forEach((bikeshop) => {
-          if (Object.values(bikeshop).includes(this.search)) {
-            searchResults.push(bikeshop)
-            this.message = ''
-          } else if (bikeshop.address &&
-              Object.values(bikeshop.address).includes(this.search)) {
+          if ((Object.values(bikeshop).includes(this.search)) || Object.values(bikeshop.address).includes(this.search)) {
             searchResults.push(bikeshop)
             this.message = ''
           } else if (searchResults.length === 0) {
@@ -128,4 +130,15 @@ p {
     margin-right: auto;
     margin-top: 20vh;
 }
+.bikeshop{
+  position: relative;
+  height: 40px;
+}
+.map{
+  margin-top: 55px;
+  position: fixed;
+  width: 100%;
+  height: 90%;
+}
+
 </style>

@@ -1,8 +1,8 @@
 <template>
     <div>
   <b-card
-    style="max-width: 20rem;"
     class="mb-2"
+    style="max-width: 20rem; margin-left: 5px; top: 60px;"
   >
     <b-card-text>
       <h2>{{bikeshop.name}}</h2>
@@ -35,3 +35,6 @@ export default {
   }
 }
 </script>
+<style scoped>
+
+</style>
