@@ -9,10 +9,14 @@
         <hr>
     <div class="row" v:bind="user">
         <!-- left column -->
-        <div>
+        <div class="user-page-nav">
   <b-nav vertical class="w-25">
     <b-nav-item :to="{ name: 'my_additions', params: { _id: this.user._id } }">User additions</b-nav-item>
-    <b-nav-item>Link</b-nav-item>
+    <b-nav-item>
+      <button class="delete-button">
+        Delete account
+      </button>
+      </b-nav-item>
     <b-nav-item>Another Link</b-nav-item>
     <b-nav-item disabled>Disabled</b-nav-item>
   </b-nav>
@@ -28,19 +32,19 @@
 
         <form class="form-horizontal" role="form">
             <div class="form-group" >
-            <label class="col-lg-3 control-label">{{ user.firstName }}</label>
+            <label class="col-lg-3 control-label">First name: </label>
             <div class="col-lg-8">
             <input v-model="user.firstName" class="form-control" type="text" value='first name'>
             </div>
             </div>
             <div class="form-group">
-            <label class="col-lg-3 control-label">{{ user.lastName }}</label>
+            <label class="col-lg-3 control-label">Last name:</label>
             <div class="col-lg-8">
               <input v-model="user.lastName"  class="form-control" type="text" value="last name">
             </div>
           </div>
           <div class="form-group">
-            <label class="col-lg-3 control-label" value="email">{{ user.email }}</label>
+            <label class="col-lg-3 control-label" value="email">Email:</label>
             <div class="col-lg-8">
               <input v-model="user.email" class="form-control" type="text" value="">
             </div>
@@ -48,7 +52,7 @@
           <div class="form-group">
             <label class="col-lg-3 control-label">Password:</label>
             <div class="col-lg-8">
-              <input v-model="user.password"  class="form-control" type="text">
+              <input v-model="user.password"  class="form-control" type="password">
             </div>
           </div>
 
@@ -152,5 +156,21 @@ export default {
 <style scoped>
 body{
     margin-top: 20px;
+}
+.user-page-nav{
+  background-color: rgb(38, 39, 46);
+  width: 100px;
+  height: fit-content;
+  align-content: center;
+  border-radius: 5px;
+}
+.delete-button{
+  background-color: rgb(219, 45, 45);
+  padding: 10px 34px;;
+  text-align: left;
+  display: block;
+  border: none;
+  border-radius: 5px;
+  font-size: 12px;
 }
 </style>

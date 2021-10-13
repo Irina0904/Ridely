@@ -5,9 +5,7 @@
     class="mb-2"
   >
     <b-card-text>
-      <font-awesome-icon icon="store" size="3x" />
-      <h2>{{bikeshop.name}}</h2>
-      <p>{{bikeshop.owner}}</p>
+    <font-awesome-icon icon="parking" size="3x" />
       <p v-if="bikeshop.address && bikeshop.address.city">{{bikeshop.address.city}}</p>
       <p v-else></p>
       <p v-if="bikeshop.address && bikeshop.address.street">{{bikeshop.address.street}}</p>
@@ -26,7 +24,7 @@
 
 <script>
 export default {
-  name: 'bikeshop-item',
+  name: 'parking-item',
   props: ['bikeshop'],
   data() {
     return {

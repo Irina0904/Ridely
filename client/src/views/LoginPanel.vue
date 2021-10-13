@@ -5,8 +5,9 @@
   <b-navbar variant="dark" type="dark">
     <b-navbar-brand to="/search">Ridely</b-navbar-brand>
   </b-navbar>
+
 <div class="columns" v:bind:key="login-panel">
-    <div id="login" class="column is-two-thirds">
+    <b-container fluid="md" id="login">
       <section class="section">
         <span class="dot">
           <BIconBicycle font-scale="4" variant="success"/>
@@ -22,7 +23,7 @@
           <div class="field">
             <label class="label">Password</label>
             <div class="control">
-              <input v-model="password" v:bind:key="password" class="login-input" type="password" placeholder="Your password">
+              <input v-model="password" v-on:keyup.enter="Submit()" v:bind:key="password" class="login-input" type="password" placeholder="Your password">
             </div>
           </div>
           <br><b-button type="submit" variant="outline-success" @click="Submit()">Login</b-button>
@@ -30,7 +31,7 @@
     </section><p>
       {{ response }}</p>
       <p>Don't have an account? <b-link :to="{name: 'create-account'}">Register</b-link></p>
-      </div>
+      </b-container>
       </div>
 </div>
 </template>
@@ -83,8 +84,8 @@ export default {
 <style scoped>
 #login{
   background-color: rgb(38, 39, 46);
-  width: 300px;
-  height: 370px;
+  width: fit-content;
+  height: fit-content;
   color: white;
   border-radius: 5px;
   text-align: center;
