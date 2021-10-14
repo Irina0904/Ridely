@@ -71,6 +71,7 @@
             <bikeshop-item   v-if="isABikeshop(item._id)" v-bind:bikeshop="item"/>
             <parking-item  v-else v-bind:bikeshop="item"/>
         </div>
+
 </div>
 
          <div>
