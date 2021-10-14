@@ -2,8 +2,9 @@
   <div>
     <div>
   <!-- As a link -->
-  <b-navbar class="searchNavbar" variant="dark" type="dark" toggleable="md" align="left">
-    <b-navbar-brand to="/search">Ridely</b-navbar-brand>
+
+  <b-navbar variant="dark" type="dark">
+    <b-navbar-brand to="/search">Ridely.</b-navbar-brand>
     <b-nav-form>
       <b-form-input class="mr-sm-2" input type="text" v-model="search"
       placeholder="Search"></b-form-input>
@@ -24,6 +25,9 @@
     ></b-form-checkbox-group>
     </b-card>
     </b-collapse>
+     <div class="map">
+  <map-page/>
+</div>
 </div>
 <div>
     <b-modal ref="addLocation-modal"
@@ -62,10 +66,13 @@
        <p align="center" v-else>{{addLocationMessage}}</p>
     </b-modal>
 </div>
+<div class="overflow-auto">
 <div v-for="item in filteredLocations" v-bind:key="item._id">
-            <bikeshop-item v-if="isABikeshop(item._id)" v-bind:bikeshop="item"/>
-            <parking-item v-else v-bind:bikeshop="item"/>
+            <bikeshop-item   v-if="isABikeshop(item._id)" v-bind:bikeshop="item"/>
+            <parking-item  v-else v-bind:bikeshop="item"/>
         </div>
+</div>
+
          <div>
     <p align="left">{{message}}</p>
     </div>
@@ -76,14 +83,17 @@
 import BikeshopItem from '../components/BikeshopItem.vue'
 import ParkinglotItem from '../components/ParkingItem.vue'
 import { BIconPlusCircle } from 'bootstrap-vue'
+import Map from '../components/Map'
 import { Api } from '@/Api'
 export default {
-  name: 'bikeshops',
+  name: 'bikeshops, testMap',
   components: {
+    'map-page': Map,
     'bikeshop-item': BikeshopItem,
     'parking-item': ParkinglotItem,
     BIconPlusCircle
   },
+
   mounted() {
     console.log('PAGE is loaded!')
     Api.get('http://localhost:3000/api/bikeshops')
@@ -233,11 +243,7 @@ export default {
     filteredBikeshops(searchResults) {
       if (this.search) {
         this.bikeshops.forEach((bikeshop) => {
-          if (Object.values(bikeshop).includes(this.search)) {
-            searchResults.push(bikeshop)
-            this.message = ''
-          } else if (bikeshop.address &&
-              Object.values(bikeshop.address).includes(this.search)) {
+          if ((Object.values(bikeshop).includes(this.search)) || Object.values(bikeshop.address).includes(this.search)) {
             searchResults.push(bikeshop)
             this.message = ''
           } else if (searchResults.length === 0) {
@@ -297,5 +303,26 @@ p {
 @media screen and (max-width: 600px) {
   .my-2
     { display: none;}
+}
+
+.bikeshop{
+  position: relative;
+  overflow:scroll
+}
+.map{
+  margin-top: 0px;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+.mysidebar{
+  margin-top: 50px
+}
+div.overflow-auto {
+  width: 240px;
+  height:90vh;
+  overflow: auto;
+  border: 1px solid;
+  position: fixed;
 }
 </style>

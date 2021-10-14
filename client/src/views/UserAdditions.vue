@@ -1,20 +1,23 @@
 <template>
 <div>
     <b-navbar variant="dark" type="dark">
-    <b-navbar-brand :to="{ name: 'search_id', params: { _id: this.$route.params._id } }">Ridely</b-navbar-brand>
+    <b-navbar-brand :to="{ name: 'search_id', params: { _id: this.$route.params._id } }">Ridely.</b-navbar-brand>
   </b-navbar>
     <div v-for="addition in additions" v-bind:key="addition._id">
             <addition-item v-bind:addition="addition"/>
         </div>
+        <TestMap/>
 </div>
 </template>
 <script>
 import { Api } from '@/Api'
 import AdditionItem from '../components/AdditionItem.vue'
+import TestMap from '../components/TestMap.vue'
 
 export default {
   components: {
-    'addition-item': AdditionItem
+    'addition-item': AdditionItem,
+    TestMap
   },
   data() {
     return {

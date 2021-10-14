@@ -10,6 +10,11 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
     "@fortawesome/free-solid-svg-icons": "^5.15.4",
     "i": "^0.3.7",
-    "npm": "^8.0.0"
+    "npm": "^8.0.0",
+    "vue-browser-geolocation": "^1.8.0",
+    "vue-google-login": "^2.0.5"
+  },
+  "devDependencies": {
+    "vue2-google-maps": "^0.10.7"
   }
 }

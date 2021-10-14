@@ -3,7 +3,7 @@
     <b-row>
       <b-col cols="12">
     <b-navbar variant="dark" type="dark">
-    <b-navbar-brand to="/search">Ridely</b-navbar-brand>
+    <b-navbar-brand to="/search">Ridely.</b-navbar-brand>
   </b-navbar>
       </b-col>
     </b-row>

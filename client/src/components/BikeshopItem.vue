@@ -1,8 +1,8 @@
 <template>
     <div>
   <b-card
-    style="max-width: 15rem;"
     class="mb-2"
+    style="max-width: 15rem;"
   >
     <b-card-text>
       <font-awesome-icon icon="store" size="3x" />
@@ -36,3 +36,6 @@ export default {
   }
 }
 </script>
+<style scoped>
+
+</style>

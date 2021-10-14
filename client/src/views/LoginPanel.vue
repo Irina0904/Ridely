@@ -3,7 +3,7 @@
 
 <div>
   <b-navbar variant="dark" type="dark">
-    <b-navbar-brand to="/search">Ridely</b-navbar-brand>
+    <b-navbar-brand to="/search">Ridely.</b-navbar-brand>
   </b-navbar>
 
 <div class="columns" v:bind:key="login-panel">
@@ -26,7 +26,7 @@
               <input v-model="password" v-on:keyup.enter="Submit()" v:bind:key="password" class="login-input" type="password" placeholder="Your password">
             </div>
           </div>
-          <br><b-button type="submit" variant="outline-success" @click="Submit()">Login</b-button>
+          <br><b-button type="submit" variant="outline-success" v-on:keyup.enter="Submit()">Login</b-button>
           </section>
     </section><p>
       {{ response }}</p>

@@ -47,6 +47,5 @@ export default new Router({
       name: 'my_additions',
       component: UserAdditions
     }
-
   ]
 })
