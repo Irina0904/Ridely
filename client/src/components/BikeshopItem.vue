@@ -19,7 +19,7 @@
     <p class="mt-2">Value: {{ bikeshop.rating }}</p>
   </div>
 
-    <b-button href="#" variant="primary">See location</b-button>
+    <b-button href="#" variant="primary" v-on:click="$emit('show-location')">See location</b-button>
   </b-card>
 </div>
 </template>

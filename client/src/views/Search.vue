@@ -26,7 +26,7 @@
     </b-card>
     </b-collapse>
      <div class="map">
-  <map-page/>
+  <map-page v-bind:latitude="coordinates.lat" v-bind:longitude="coordinates.lng"/>
 </div>
 </div>
 <div>
@@ -68,7 +68,7 @@
 </div>
 <div class="overflow-auto">
 <div v-for="item in filteredLocations" v-bind:key="item._id">
-            <bikeshop-item   v-if="isABikeshop(item._id)" v-bind:bikeshop="item"/>
+            <bikeshop-item v-if="isABikeshop(item._id)" v-bind:bikeshop="item" @show-location="setCoordinates(item.lat,item.lng)"/>
             <parking-item  v-else v-bind:bikeshop="item"/>
         </div>
 
@@ -155,7 +155,11 @@ export default {
         { item: 'bikeshops', name: 'Bikeshops' },
         { item: 'parkinglots', name: 'Bike parkinglots' }
       ],
-      locationAdded: false
+      locationAdded: false,
+      coordinates: {
+        lat: 0,
+        lng: 0
+      }
     }
   },
   methods: {
@@ -268,6 +272,14 @@ export default {
           }
         })
       }
+    },
+    setCoordinates(latitude, longitude) {
+      this.coordinates.lat = latitude
+      this.coordinates.lng = longitude
+      console.log(this.coordinates.lat, this.coordinates.lng)
+    },
+    clicked() {
+      console.log('clicked!')
     }
   },
   computed: {

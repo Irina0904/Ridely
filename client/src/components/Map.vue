@@ -16,6 +16,7 @@
 </template>
 <script>
 export default {
+  props: ['latitude', 'longitude'],
   data() {
     return {
       coordinates: {
@@ -241,6 +242,11 @@ export default {
           {
             lat: this.coordinates.lat,
             lng: this.coordinates.lng,
+            label: 'Frölunda'
+          },
+          {
+            lat: this.latitude,
+            lng: this.longitude,
             label: 'Frölunda'
           }]
       })
