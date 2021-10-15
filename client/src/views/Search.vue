@@ -15,7 +15,7 @@
           <b-button id="login-button" to="/login-panel" variant="success" class="my-2 my-sm-0">Login</b-button>
   </b-navbar>
   <b-collapse id="collapse-2">
-    <b-card>
+    <b-card class="col-2" id="entity-card">
     <b-form-checkbox-group
       v-model="filterSelected"
       :options="filterOptions"
@@ -338,4 +338,5 @@ div.overflow-auto {
   border: 1px solid;
   position: fixed;
 }
+@media screen and (max-width: 768) {#entity-card{ display: none ;}}
 </style>
