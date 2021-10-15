@@ -5,11 +5,18 @@
       :zoom="16"
       :options="options"
       style="width: 100%; height: 96vh; margin: 0px auto"
-    ></GmapMap>
+    >
+    <GmapMarker
+        :key="index"
+        v-for="(gmp, index) in locations"
+        :position="gmp"
+        @click="center=gmp"
+      ></GmapMarker></GmapMap>
   </div>
 </template>
 <script>
 export default {
+  props: ['latitude', 'longitude'],
   data() {
     return {
       coordinates: {
@@ -221,14 +228,27 @@ export default {
             }
           ]
         ]
-      }
+      },
+      locations: []
     }
   },
 
-  created() {
+  mounted() {
     this.$getLocation({})
       .then((coordinates) => {
         this.coordinates = coordinates
+        console.log(this.coordinates.lat)
+        this.locations = [
+          {
+            lat: this.coordinates.lat,
+            lng: this.coordinates.lng,
+            label: 'Frölunda'
+          },
+          {
+            lat: this.latitude,
+            lng: this.longitude,
+            label: 'Frölunda'
+          }]
       })
       .catch((error) => alert(error))
   }
