@@ -68,7 +68,7 @@
 </div>
 <div class="overflow-auto">
 <div v-for="item in filteredLocations" v-bind:key="item._id">
-            <bikeshop-item v-if="isABikeshop(item._id)" v-bind:bikeshop="item" @show-location="setCoordinates(item.lat,item.lng)"/>
+            <bikeshop-item v-if="isABikeshop(item._id)" v-bind:bikeshop="item" @show-location="setCoordinates(item.lat, item.lng)"/>
             <parking-item  v-else v-bind:bikeshop="item"/>
         </div>
 
@@ -157,8 +157,8 @@ export default {
       ],
       locationAdded: false,
       coordinates: {
-        lat: 0,
-        lng: 0
+        lat: 58,
+        lng: 11
       }
     }
   },
@@ -279,7 +279,9 @@ export default {
       console.log(this.coordinates.lat, this.coordinates.lng)
     },
     clicked() {
-      console.log('clicked!')
+      this.coordinates.lat = 57
+      this.coordinates.lng = 11
+      console.log(this.coordinates.lat, this.coordinates.lng)
     }
   },
   computed: {
@@ -335,7 +337,7 @@ div.overflow-auto {
   width: 240px;
   height:90vh;
   overflow: auto;
-  border: 1px solid;
+  border: none;
   position: fixed;
 }
 @media screen and (max-width: 768) {#entity-card{ display: none ;}}

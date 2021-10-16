@@ -1,5 +1,6 @@
 <template>
   <div>
+    <h1> {{this.latitude}} {{this.longitude}}</h1> <!-- For debugging -->
     <GmapMap
       :center="coordinates"
       :zoom="16"
@@ -16,13 +17,22 @@
 </template>
 <script>
 export default {
-  props: ['latitude', 'longitude'],
+  props: {
+    latitude: Float32Array,
+    longitude: Float32Array
+  },
   data() {
     return {
       coordinates: {
-        lat: 0,
-        lng: 0
+        lat: this.latitude,
+        lng: this.longitude
       },
+      locations: [
+        {
+          lat: this.latitude,
+          lng: this.longitude
+        }],
+
       options: {
         zoomControl: true,
         mapTypeControl: false,
@@ -228,8 +238,29 @@ export default {
             }
           ]
         ]
-      },
-      locations: []
+      }
+    }
+  },
+  watch: {
+    latitude: function (newVal, oldVal) { // watch it
+      console.log('Prop changed: ', newVal, ' | was: ', oldVal)
+      this.locations = [{
+        lat: newVal,
+        lng: this.longitude,
+        label: 'Frölunda'
+      }]
+      this.coordinates.lat = newVal
+      console.log(this.locations)
+    },
+    longitude: function (newVal, oldVal) { // watch it
+      console.log('Prop changed: ', newVal, ' | was: ', oldVal)
+      this.locations = [{
+        lat: this.latitude,
+        lng: newVal,
+        label: 'Frölunda'
+      }]
+      this.coordinates.lng = newVal
+      console.log(this.locations)
     }
   },
 
@@ -241,13 +272,7 @@ export default {
         this.locations = [
           {
             lat: this.coordinates.lat,
-            lng: this.coordinates.lng,
-            label: 'Frölunda'
-          },
-          {
-            lat: this.latitude,
-            lng: this.longitude,
-            label: 'Frölunda'
+            lng: this.coordinates.lng
           }]
       })
       .catch((error) => alert(error))

@@ -25,7 +25,7 @@
               <input v-model="password" v:bind:key="password" class="login-input" type="password" placeholder="Your password">
             </div>
           </div>
-          <br><b-button type="submit" variant="outline-success" v-on:keyup.enter="Submit()">Login</b-button>
+          <br><b-button type="submit" variant="outline-success" @click="Submit()">Login</b-button>
           </section>
     </section><p>
       {{ response }}</p>
