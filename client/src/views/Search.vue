@@ -85,7 +85,8 @@
 <div class="col-xs-4 col-sm-4 col-lg-6 overflow-auto">
 <div v-for="item in filteredLocations" v-bind:key="item._id">
             <bikeshop-item v-if="isABikeshop(item._id)" v-bind:bikeshop="item" @show-location="setCoordinates(item.lat, item.lng)"/>
-            <parking-item  v-else v-bind:bikeshop="item"/>
+            <parking-item  v-else-if="isAParkinglot(item._id)" v-bind:bikeshop="item"/>
+            <pumpstation-item v-else v-bind:pumpstation="item"/>
         </div>
 
 </div>
@@ -98,6 +99,7 @@
 <script>
 import BikeshopItem from '../components/BikeshopItem.vue'
 import ParkinglotItem from '../components/ParkingItem.vue'
+import PumpstationItem from '../components/PumpstationItem.vue'
 import { BIconPlusCircle } from 'bootstrap-vue'
 import Map from '../components/Map'
 import { Api } from '@/Api'
@@ -107,6 +109,7 @@ export default {
     'map-page': Map,
     'bikeshop-item': BikeshopItem,
     'parking-item': ParkinglotItem,
+    'pumpstation-item': PumpstationItem,
     BIconPlusCircle
   },
 
@@ -143,12 +146,31 @@ export default {
       .then(() => {
         console.log('This runs every time after success or error.')
       })
+    Api.get('http://localhost:3000/api/pumpstations')
+      .then(response => {
+        console.log(response.data)
+        this.pumpstations = response.data
+        console.log(this.pumpstations)
+        this.allLocations = this.pumpstations.concat(this.parkinglots,
+          this.bikeshops)
+        this.allLocations = this.allLocations.sort(() => Math.random() - 0.5)
+        console.log(this.allLocations)
+      })
+      .catch(error => {
+        this.pumpstations = []
+        console.log(error)
+        //   TODO: display some error message instead of logging to console
+      })
+      .then(() => {
+        console.log('This runs every time after success or error.')
+      })
   },
   data() {
     return {
       allLocations: [],
       bikeshops: [],
       parkinglots: [],
+      pumpstations: [],
       message: '',
       addLocationMessage: '',
       form: {
@@ -169,7 +191,8 @@ export default {
       filterSelected: [],
       filterOptions: [
         { item: 'bikeshops', name: 'Bikeshops' },
-        { item: 'parkinglots', name: 'Bike parkinglots' }
+        { item: 'parkinglots', name: 'Bike parkinglots' },
+        { item: 'pumpstations', name: 'Pumpstations' }
       ],
       locationAdded: false,
       coordinates: {
@@ -263,6 +286,15 @@ export default {
       })
       return isBikeshop
     },
+    isAParkinglot(itemID) {
+      let isParkinglot = false
+      this.parkinglots.forEach((parkinglot) => {
+        if (parkinglot._id === itemID) {
+          isParkinglot = true
+        }
+      })
+      return isParkinglot
+    },
     arrayEquals(array1, array2) {
       const result = array1.every(function (element) {
         return array2.includes(element)
@@ -288,7 +320,11 @@ export default {
     filteredBikeshops(searchResults) {
       if (this.search) {
         this.bikeshops.forEach((bikeshop) => {
-          if ((Object.values(bikeshop).includes(this.search)) || Object.values(bikeshop.address).includes(this.search)) {
+          if (Object.values(bikeshop).includes(this.search)) {
+            searchResults.push(bikeshop)
+            this.message = ''
+          } else if (bikeshop.address &&
+              Object.values(bikeshop.address).includes(this.search)) {
             searchResults.push(bikeshop)
             this.message = ''
           } else if (searchResults.length === 0) {
@@ -300,6 +336,22 @@ export default {
     filteredParkinglots(searchResults) {
       if (this.search) {
         this.parkinglots.forEach((bikeshop) => {
+          if (Object.values(bikeshop).includes(this.search)) {
+            searchResults.push(bikeshop)
+            this.message = ''
+          } else if (bikeshop.address &&
+              Object.values(bikeshop.address).includes(this.search)) {
+            searchResults.push(bikeshop)
+            this.message = ''
+          } else if (searchResults.length === 0) {
+            this.message = 'Nothing found'
+          }
+        })
+      }
+    },
+    filteredPumpstations(searchResults) {
+      if (this.search) {
+        this.pumpstations.forEach((bikeshop) => {
           if (Object.values(bikeshop).includes(this.search)) {
             searchResults.push(bikeshop)
             this.message = ''
@@ -326,24 +378,60 @@ export default {
   },
   computed: {
     filteredLocations: function () {
-      const bikeshopsSelected = this.arrayEquals(this.filterSelected, ['bikeshops'])
-      const parkinglotsSelected = this.arrayEquals(this.filterSelected, ['parkinglots'])
-      if (!this.search && (this.filterSelected.length === 0 || this.filterSelected.length === 2)) {
-        return this.allLocations
-      } else if (!this.search && bikeshopsSelected) {
-        return this.bikeshops
-      } else if (!this.search && parkinglotsSelected) {
-        return this.parkinglots
+      if (!this.search) {
+        switch (this.filterSelected.toString()) {
+          case [].toString():
+            return this.allLocations
+          case ['bikeshops', 'parkinglots', 'pumpstations'].toString():
+            return this.allLocations
+          case ['bikeshops'].toString():
+            return this.bikeshops
+          case ['parkinglots'].toString():
+            return this.parkinglots
+          case ['pumpstations'].toString():
+            return this.pumpstations
+          case ['bikeshops', 'parkinglots'].toString():
+            return this.bikeshops.concat(this.parkinglots).sort(() => Math.random() - 0.5)
+          case ['parkinglots', 'pumpstations'].toString():
+            return this.parkinglots.concat(this.pumpstations).sort(() => Math.random() - 0.5)
+          case ['bikeshops', 'pumpstations'].toString():
+            return this.bikeshops.concat(this.pumpstations).sort(() => Math.random() - 0.5)
+        }
       }
+
       const searchResults = []
-      if (this.search && (this.filterSelected.length === 0 || this.filterSelected.length === 2)) {
-        this.filteredAllLocations(searchResults)
-      } else if (this.search && bikeshopsSelected) {
-        this.filteredBikeshops(searchResults)
-      } else if (this.search && parkinglotsSelected) {
-        this.filteredParkinglots(searchResults)
+      if (this.search) {
+        switch (this.filterSelected.toString()) {
+          case [].toString():
+            this.filteredAllLocations(searchResults)
+            break
+          case ['bikeshops', 'parkinglots', 'pumpstations'].toString():
+            this.filteredAllLocations(searchResults)
+            break
+          case ['bikeshops'].toString():
+            this.filteredBikeshops(searchResults)
+            break
+          case ['parkinglots'].toString():
+            this.filteredParkinglots(searchResults)
+            break
+          case ['pumpstations'].toString():
+            this.filteredPumpstations(searchResults)
+            break
+          case ['bikeshops', 'parkinglots'].toString():
+            this.filteredBikeshops(searchResults)
+            this.filteredParkinglots(searchResults)
+            break
+          case ['parkinglots', 'pumpstations'].toString():
+            this.filteredParkinglots(searchResults)
+            this.filteredPumpstations(searchResults)
+            break
+          case ['bikeshops', 'pumpstations'].toString():
+            this.filteredBikeshops(searchResults)
+            this.filteredPumpstations(searchResults)
+            break
+        }
       }
-      return searchResults
+      return searchResults.sort(() => Math.random() - 0.5)
     }
   }
 

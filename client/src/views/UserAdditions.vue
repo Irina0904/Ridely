@@ -1,11 +1,12 @@
 <template>
 <div>
-    <b-navbar variant="dark" type="dark">
-    <b-navbar-brand :to="{ name: 'search_id', params: { _id: this.$route.params._id } }">Ridely.</b-navbar-brand>
-  </b-navbar>
-    <div v-for="addition in additions" v-bind:key="addition._id">
+  <b-container>
+    <b-row>
+    <b-col v-for="addition in additions" v-bind:key="addition._id" cols="12" sm="6" md="4">
             <addition-item v-bind:addition="addition"/>
-        </div>
+        </b-col>
+    </b-row>
+        </b-container>
 </div>
 </template>
 <script>

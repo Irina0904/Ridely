@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h1> {{this.latitude}} {{this.longitude}}</h1> <!-- For debugging -->
     <GmapMap
       :center="coordinates"
       :zoom="16"

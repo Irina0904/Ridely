@@ -1,14 +1,13 @@
 <template>
     <div>
-        <b-row class="justify-content-md-center">
+        <b-row class="justify-content-sm-center mt-5 ml-4">
   <b-card
-    style="max-width: 20rem;"
+    style="width: 15rem;"
     class="mb-2"
     align="center"
   >
     <b-card-text>
       <h2>{{addition.name}}</h2>
-      <p>{{addition.added_by}}</p>
     </b-card-text>
 
     <b-button href="#" variant="primary">Status</b-button>
