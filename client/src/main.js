@@ -17,7 +17,8 @@ library.add(faParking, faStore, faFilter, faBars, faTools)
 Vue.use(VueGeolocation)
 Vue.use(VueGoogleMaps, {
   load: {
-    key: 'AIzaSyAIr6PgP2qeOEGiFdENEAItAd_sOsbpA-g'
+    key: 'AIzaSyAIr6PgP2qeOEGiFdENEAItAd_sOsbpA-g',
+    mapId: '14b7289127689dad'
   },
   installComponents: true
 })

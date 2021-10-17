@@ -13,7 +13,8 @@
      <b-button id="add-location" variant="outline-success" class="my-2 my-sm-0" @click="showModal">Add
           <BIconPlusCircle/></b-button>&nbsp;&nbsp;
           <b-button v-if="isLoggedIn == false" id="login-button" to="/login-panel" variant="success" class="my-2 my-sm-0">Login</b-button>
-          <b-button v-else id="logout-button" to="/home" variant="danger" class="my-2 my-sm-0">Logout</b-button>
+          <b-button v-else id="logout-button" to="/login-panel" variant="danger" class="my-2 my-sm-0">Logout</b-button>&nbsp;&nbsp;
+          <b-button v-if="isLoggedIn == true" id="profile" to="/users/:_id" class="my-2 my-sm-0" >Profile</b-button>
 
   </b-navbar>
   <b-collapse id="collapse-2">
@@ -22,6 +23,7 @@
       v-model="filterSelected"
       :options="filterOptions"
       class="mb-3"
+      id="checkboxes"
       value-field="item"
       text-field="name"
     ></b-form-checkbox-group>
@@ -73,6 +75,7 @@
 
           <b-form-input
           v-model="form.address.zip_code"
+          v-on:keyup.enter="addLocation"
             placeholder="Location Zip code"
             required
           ></b-form-input>
@@ -446,6 +449,12 @@ p {
     margin-left: 30px;
     margin-right: auto;
     margin-top: 20vh;
+}
+.map{
+  margin-top: 55px;
+  position: fixed;
+  width: 100% !important;
+  height: 90% !important;
 }
 @media screen and (max-width: 600px) {
   .my-2

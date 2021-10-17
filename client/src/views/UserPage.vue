@@ -13,49 +13,46 @@
         <div>
 </div>
             <!-- edit form column -->
-            <div class="col-md-9 personal-info">
-            <div class="alert alert-info alert-dismissable">
-            <a class="panel-close close" data-dismiss="alert">×</a>
-            <i class="fa fa-coffee"></i>
-            <strong></strong>Don't forget to confirm changes.
+            <div class="col-md-9 personal-info justify-content-center mx-auto">
+            <div class="alert alert-primary" role="alert">
+              <strong>Hi favorite biker!</strong> Don't forget to confirm your changes.
             </div>
             <h3>Personal info</h3>
-
-        <form class="justify-content-md-center" role="form">
-            <div class="form-group" >
-            <label class="col-lg-3 control-label">{{ user.firstName }}</label>
-            <div class="col-lg-8">
-            <input v-model="user.firstName" class="form-control" type="text" value='first name'>
-            </div>
+        <div class="form-row justify-content-center">
+          <form class="form-horizontal" role="form">
+              <div class="form-group">
+              <label class="col-lg-3 control-label">Forename</label>
+              <div class="col-lg-8 mx-auto">
+              <input v-model="user.firstName" class="form-control" type="text" value='first name'>
+              </div>
+              </div>
+              <div class="form-group">
+              <label class="col-lg-3 control-label">Surname</label>
+              <div class="col-lg-8 mx-auto">
+                <input v-model="user.lastName"  class="form-control" type="text" value="last name">
+              </div>
             </div>
             <div class="form-group">
-            <label class="col-lg-3 control-label">{{ user.lastName }}</label>
-            <div class="col-lg-8">
-              <input v-model="user.lastName"  class="form-control" type="text" value="last name">
+              <label class="col-lg-3 control-label" value="email">Mail</label>
+              <div class="col-lg-8 mx-auto">
+                <input v-model="user.email" class="form-control" type="text" value="">
+              </div>
             </div>
-          </div>
-          <div class="form-group">
-            <label class="col-lg-3 control-label" value="email">{{ user.email }}</label>
-            <div class="col-lg-8">
-              <input v-model="user.email" class="form-control" type="text" value="">
+            <div class="form-group">
+              <label class="col-lg-3 control-label">Password</label>
+              <div class="col-lg-8 mx-auto">
+                <input v-model="user.password"  class="form-control" type="password">
+              </div>
             </div>
-          </div>
-          <div class="form-group">
-            <label class="col-lg-3 control-label">Password:</label>
-            <div class="col-lg-8">
-              <input v-model="user.password"  class="form-control" type="password">
-            </div>
-          </div>
+                  <b-button class="btn_message" id="btn" variant="primary" @click="Updateprofile()">Confirm changes</b-button> &nbsp;
+                  <b-button class="btn_message" id="btn" variant="danger" @click="deletAccount()">Delete Account</b-button> &nbsp;
+                  <b-button class="btn_message" id="btn" variant="danger" @click="resetAccount()">Reset Account</b-button> &nbsp;
 
-                <b-button class="btn_message" variant="primary" @click="Updateprofile()">Confirm changes</b-button> &nbsp;
-                <b-button class="btn_message" variant="danger" @click="deletAccount()">Delete Account</b-button> &nbsp;
-                <b-button class="btn_message" variant="danger" @click="resetAccount()">Reset Account</b-button> &nbsp;
-
-                <div v-if="deleted"><h1>User Account Deleted</h1></div>
-                <div v-if="updated"><h1>User Account Updated</h1></div>
-                <div v-if="reseted"><h1>User Account Reseted</h1></div>
-
+                  <div v-if="deleted"><h1>User Account Deleted</h1></div>
+                  <div v-if="updated"><h1>User Account Updated</h1></div>
+                  <div v-if="reseted"><h1>User Account Reseted</h1></div>
         </form>
+        </div>
       </div>
   </div>
 </div>
@@ -155,5 +152,27 @@ export default {
 <style scoped>
 body{
     margin-top: 20px;
+    align-items: center !important;
 }
+.alert{
+  display:inline-block;
+}
+.text-primary{
+  margin-top: 2%;
+}
+
+@media screen and (max-width: 768px) {
+#side-menu{
+height: 0% !important;
+width: 100% !important;
+margin-left: 45%;
+margin-bottom: -40%;
+}
+.b-button{
+  width: 0% !important;
+  height: 100% !important;
+  vertical-align: 10% !important;
+}
+}
+
 </style>
