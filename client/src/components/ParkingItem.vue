@@ -12,7 +12,7 @@
       <p v-else></p>
       <p>Rating: {{ bikeshop.rating }}</p>
     </b-card-text>
-    <div>
+    <div class="rating">
     <b-form-rating v-model="value"></b-form-rating>
     <p class="mt-2">Value: {{ bikeshop.rating }}</p>
   </div>
@@ -34,3 +34,10 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+@media screen and (max-width: 575.9px) {
+  .rating { display: none ;}
+  }
+
+</style>

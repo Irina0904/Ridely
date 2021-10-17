@@ -7,7 +7,8 @@ var pumpstationSchema = new Schema({
         city: String,
         street: String,
         zip_code: String},
-    rating: {type: Number}
+    rating: {type: Number},
+    added_By: {type: [Schema.Types.ObjectId]}
 
 });
 

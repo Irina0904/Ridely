@@ -15,7 +15,7 @@
           <b-button id="login-button" to="/login-panel" variant="success" class="my-2 my-sm-0">Login</b-button>
   </b-navbar>
   <b-collapse id="collapse-2">
-    <b-card class="col-2" id="entity-card">
+    <b-card class="col-2">
     <b-form-checkbox-group
       v-model="filterSelected"
       :options="filterOptions"
@@ -45,7 +45,7 @@
 
               <b-form-group>
 
-          <b-form-input v-if="selected === 'bikeshop'"
+          <b-form-input
           v-model="form.locationName"
             placeholder="Location name"
             required
@@ -54,8 +54,24 @@
       <b-form-group>
 
           <b-form-input
+          v-model="form.address.street"
+            placeholder="Location Street name"
+            required
+          ></b-form-input>
+      </b-form-group>
+      <b-form-group>
+
+          <b-form-input
           v-model="form.address.city"
-            placeholder="Location city"
+            placeholder="Location City"
+            required
+          ></b-form-input>
+      </b-form-group>
+      <b-form-group>
+
+          <b-form-input
+          v-model="form.address.zip_code"
+            placeholder="Location Zip code"
             required
           ></b-form-input>
       </b-form-group>
@@ -66,15 +82,14 @@
        <p align="center" v-else>{{addLocationMessage}}</p>
     </b-modal>
 </div>
-<div class="overflow-auto">
+<div class="col-xs-4 col-sm-4 col-lg-6 overflow-auto">
 <div v-for="item in filteredLocations" v-bind:key="item._id">
             <bikeshop-item v-if="isABikeshop(item._id)" v-bind:bikeshop="item" @show-location="setCoordinates(item.lat, item.lng)"/>
             <parking-item  v-else v-bind:bikeshop="item"/>
         </div>
 
 </div>
-
-         <div>
+<div>
     <p align="left">{{message}}</p>
     </div>
         </div>
@@ -145,10 +160,11 @@ export default {
         }
       },
       search: '',
-      selected: 'bikeshop',
+      selected: '',
       options: [
         { item: 'bikeshop', name: 'Bikeshop' },
-        { item: 'bike_parkinglot', name: 'Bike parkinglot' }
+        { item: 'bike_parkinglot', name: 'Bike parkinglot' },
+        { item: 'pumpstation', name: 'Bike pumpstation' }
       ],
       filterSelected: [],
       filterOptions: [
@@ -202,11 +218,35 @@ export default {
           console.log('failed to get user data', error)
         })
     },
+    addPumpstation() {
+      console.log('reached')
+      const userID = this.$route.params._id
+      Api.post('http://localhost:3000/api/pumpstations',
+        {
+          address: {
+            city: this.form.address.city,
+            street: this.form.adress.street,
+            zipcode: this.form.address.zip_code
+          },
+          name: this.form.locationName,
+          added_by: userID
+        })
+        .then(response => {
+          console.log(response.data)
+          this.locationAdded = true
+          this.addLocationMessage = 'New bike pumpstation added!'
+        })
+        .catch(error => {
+          console.log('failed to get user data', error)
+        })
+    },
     addLocation() {
       if (this.selected === 'bikeshop') {
         this.addBikeshop()
       } else if (this.selected === 'bike_parkinglot') {
         this.addParkinglot()
+      } else if (this.selected === 'pumpstation') {
+        this.addPumpstation()
       }
     },
     resetModal() {
@@ -320,6 +360,11 @@ p {
     { display: none;}
 }
 
+@media screen and (max-width: 400px) {
+  .overflow-auto
+    { display: none;}
+}
+
 .bikeshop{
   position: relative;
   overflow:scroll
@@ -340,5 +385,4 @@ div.overflow-auto {
   border: none;
   position: fixed;
 }
-@media screen and (max-width: 768) {#entity-card{ display: none ;}}
 </style>
