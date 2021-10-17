@@ -3,7 +3,7 @@
     <b-navbar variant="dark" type="dark">
     <b-navbar-brand to="/search">Ridely.</b-navbar-brand>
   </b-navbar>
-  <div id="login-container"><br>
+  <b-container fluid="md" id="login-container"><br>
     <b-form @submit="onSubmit" @reset="onReset" v-if="show">
       <b-row class="justify-content-md-center">
       <b-form-group>
@@ -56,13 +56,17 @@
 </b-row>
 
 <b-row class="justify-content-md-center">
+
       <b-btn-toolbar>
+        <b-col>
         &nbsp;<b-button type="submit" variant="outline-success">Submit</b-button>&nbsp;
         <b-button type="reset" variant="danger">Reset</b-button>
+        </b-col>
       </b-btn-toolbar>
+
 </b-row>
     </b-form>
-  </div>
+  </b-container>
   </div>
 </template>
 

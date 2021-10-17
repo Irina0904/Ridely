@@ -4,18 +4,13 @@
   <b-navbar variant="dark" type="dark">
     <b-navbar-brand :to="{ name: 'search_id', params: { _id: this.user._id } }">Ridely.</b-navbar-brand>
   </b-navbar>
+  <b-card no-body>
+  <b-tabs pills card align="center">
+  <b-tab title="My account" active>
 <div class="container bootstrap snippets bootdey">
-    <h1 class="text-primary"><span class="glyphicon glyphicon-user"></span>My Account</h1>
-        <hr>
     <div class="row" v:bind="user">
         <!-- left column -->
         <div>
-  <b-nav vertical class="w-25">
-    <b-nav-item :to="{ name: 'my_additions', params: { _id: this.user._id } }">User additions</b-nav-item>
-    <b-nav-item>Link</b-nav-item>
-    <b-nav-item>Another Link</b-nav-item>
-    <b-nav-item disabled>Disabled</b-nav-item>
-  </b-nav>
 </div>
             <!-- edit form column -->
             <div class="col-md-9 personal-info">
@@ -26,7 +21,7 @@
             </div>
             <h3>Personal info</h3>
 
-        <form class="form-horizontal" role="form">
+        <form class="justify-content-md-center" role="form">
             <div class="form-group" >
             <label class="col-lg-3 control-label">{{ user.firstName }}</label>
             <div class="col-lg-8">
@@ -64,6 +59,10 @@
       </div>
   </div>
 </div>
+  </b-tab>
+  <b-tab title="My additions"> <user-additions/></b-tab>
+  </b-tabs>
+  </b-card>
 </div>
 
 </template>
@@ -73,10 +72,14 @@
 // @ is an alias to /src
 import axios from 'axios'
 import { Api } from '@/Api'
+import UserAdditions from '../views/UserAdditions.vue'
 // import { serverBus } from '../main.js'
 
 export default {
   props: ['userInfos'],
+  components: {
+    'user-additions': UserAdditions
+  },
   data: function () {
     return {
       user: {
