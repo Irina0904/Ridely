@@ -186,7 +186,7 @@ export default {
       options: [
         { item: 'bikeshop', name: 'Bikeshop' },
         { item: 'bike_parkinglot', name: 'Bike parkinglot' },
-        { item: 'pumpstation', name: 'Bike pumpstation' }
+        { item: 'pumpstation', name: 'Pumpstation' }
       ],
       filterSelected: [],
       filterOptions: [
@@ -212,6 +212,7 @@ export default {
       const userID = this.$route.params._id
       Api.post('http://localhost:3000/api/bikeshops',
         {
+          address: this.form.address,
           name: this.form.locationName,
           added_by: userID
         })
@@ -228,8 +229,8 @@ export default {
       const userID = this.$route.params._id
       Api.post('http://localhost:3000/api/parkinglots',
         {
-          address:
-          { city: this.form.address.city },
+          address: this.form.address,
+          name: this.form.locationName,
           added_by: userID
         })
         .then(response => {
@@ -246,18 +247,14 @@ export default {
       const userID = this.$route.params._id
       Api.post('http://localhost:3000/api/pumpstations',
         {
-          address: {
-            city: this.form.address.city,
-            street: this.form.adress.street,
-            zipcode: this.form.address.zip_code
-          },
+          address: this.form.address,
           name: this.form.locationName,
           added_by: userID
         })
         .then(response => {
           console.log(response.data)
           this.locationAdded = true
-          this.addLocationMessage = 'New bike pumpstation added!'
+          this.addLocationMessage = 'New pumpstation added!'
         })
         .catch(error => {
           console.log('failed to get user data', error)

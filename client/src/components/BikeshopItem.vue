@@ -12,7 +12,8 @@
       <p v-else></p>
       <p v-if="bikeshop.address && bikeshop.address.street">{{bikeshop.address.street}}</p>
       <p v-else></p>
-      <p>Rating: {{ bikeshop.rating }}</p>
+      <div class="rating">
+      <p>Rating: {{ bikeshop.rating }}</p></div>
     </b-card-text>
     <div class="rating">
     <b-form-rating  v-model="value"></b-form-rating>
@@ -37,7 +38,7 @@ export default {
 }
 </script>
 <style scoped>
-@media screen and (max-width: 575.9px) {
+@media screen and (max-width: 624px) {
   .rating { display: none ;}
   }
 

@@ -11,9 +11,10 @@
       <p v-else></p>
       <p v-if="pumpstation.address && pumpstation.address.street">{{pumpstation.address.street}}</p>
       <p v-else></p>
-      <p>Rating: {{ pumpstation.rating }}</p>
+      <div class="rating">
+      <p>Rating: {{ pumpstation.rating }}</p></div>
     </b-card-text>
-    <div>
+    <div class="rating">
     <b-form-rating v-model="value"></b-form-rating>
     <p class="mt-2">Value: {{ pumpstation.rating }}</p>
   </div>
@@ -36,5 +37,7 @@ export default {
 }
 </script>
 <style scoped>
-
+@media screen and (max-width: 624px) {
+  .rating { display: none ;}
+  }
 </style>
