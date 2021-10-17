@@ -5,230 +5,78 @@
       :zoom="16"
       :options="options"
       style="width: 100%; height: 96vh; margin: 0px auto"
-    ></GmapMap>
+    >
+    <GmapMarker
+        :key="index"
+        v-for="(gmp, index) in locations"
+        :position="gmp"
+        @click="center=gmp"
+      ></GmapMarker></GmapMap>
   </div>
 </template>
 <script>
 export default {
+  props: {
+    latitude: Float32Array,
+    longitude: Float32Array
+  },
   data() {
     return {
       coordinates: {
-        lat: 0,
-        lng: 0
+        lat: this.latitude,
+        lng: this.longitude
       },
+      locations: [
+        {
+          lat: this.latitude,
+          lng: this.longitude
+        }],
+
       options: {
+        mapId: '14b7289127689dad',
         zoomControl: true,
         mapTypeControl: false,
         scaleControl: false,
         streetViewControl: false,
         rotateControl: false,
         fullscreenControl: false,
-        disableDefaultUi: false,
-        styles: [
-          [
-            {
-              elementType: 'geometry',
-              stylers: [
-                {
-                  color: '#242f3e'
-                }
-              ]
-            },
-            {
-              elementType: 'labels.text.fill',
-              stylers: [
-                {
-                  color: '#746855'
-                }
-              ]
-            },
-            {
-              elementType: 'labels.text.stroke',
-              stylers: [
-                {
-                  color: '#242f3e'
-                }
-              ]
-            },
-            {
-              featureType: 'administrative',
-              elementType: 'geometry',
-              stylers: [
-                {
-                  visibility: 'off'
-                }
-              ]
-            },
-            {
-              featureType: 'administrative.locality',
-              elementType: 'labels.text.fill',
-              stylers: [
-                {
-                  color: '#d59563'
-                }
-              ]
-            },
-            {
-              featureType: 'poi',
-              stylers: [
-                {
-                  visibility: 'off'
-                }
-              ]
-            },
-            {
-              featureType: 'poi',
-              elementType: 'labels.text.fill',
-              stylers: [
-                {
-                  color: '#d59563'
-                }
-              ]
-            },
-            {
-              featureType: 'poi.park',
-              elementType: 'geometry',
-              stylers: [
-                {
-                  color: '#263c3f'
-                }
-              ]
-            },
-            {
-              featureType: 'poi.park',
-              elementType: 'labels.text.fill',
-              stylers: [
-                {
-                  color: '#6b9a76'
-                }
-              ]
-            },
-            {
-              featureType: 'road',
-              elementType: 'geometry',
-              stylers: [
-                {
-                  color: '#38414e'
-                }
-              ]
-            },
-            {
-              featureType: 'road',
-              elementType: 'geometry.stroke',
-              stylers: [
-                {
-                  color: '#212a37'
-                }
-              ]
-            },
-            {
-              featureType: 'road',
-              elementType: 'labels.icon',
-              stylers: [
-                {
-                  visibility: 'off'
-                }
-              ]
-            },
-            {
-              featureType: 'road',
-              elementType: 'labels.text.fill',
-              stylers: [
-                {
-                  color: '#9ca5b3'
-                }
-              ]
-            },
-            {
-              featureType: 'road.highway',
-              elementType: 'geometry',
-              stylers: [
-                {
-                  color: '#746855'
-                }
-              ]
-            },
-            {
-              featureType: 'road.highway',
-              elementType: 'geometry.stroke',
-              stylers: [
-                {
-                  color: '#1f2835'
-                }
-              ]
-            },
-            {
-              featureType: 'road.highway',
-              elementType: 'labels.text.fill',
-              stylers: [
-                {
-                  color: '#f3d19c'
-                }
-              ]
-            },
-            {
-              featureType: 'transit',
-              stylers: [
-                {
-                  visibility: 'off'
-                }
-              ]
-            },
-            {
-              featureType: 'transit',
-              elementType: 'geometry',
-              stylers: [
-                {
-                  color: '#2f3948'
-                }
-              ]
-            },
-            {
-              featureType: 'transit.station',
-              elementType: 'labels.text.fill',
-              stylers: [
-                {
-                  color: '#d59563'
-                }
-              ]
-            },
-            {
-              featureType: 'water',
-              elementType: 'geometry',
-              stylers: [
-                {
-                  color: '#17263c'
-                }
-              ]
-            },
-            {
-              featureType: 'water',
-              elementType: 'labels.text.fill',
-              stylers: [
-                {
-                  color: '#515c6d'
-                }
-              ]
-            },
-            {
-              featureType: 'water',
-              elementType: 'labels.text.stroke',
-              stylers: [
-                {
-                  color: '#17263c'
-                }
-              ]
-            }
-          ]
-        ]
+        disableDefaultUi: false
       }
     }
   },
+  watch: {
+    latitude: function (newVal, oldVal) { // watch it
+      console.log('Prop changed: ', newVal, ' | was: ', oldVal)
+      this.locations = [{
+        lat: newVal,
+        lng: this.longitude,
+        label: 'Frölunda'
+      }]
+      this.coordinates.lat = newVal
+      console.log(this.locations)
+    },
+    longitude: function (newVal, oldVal) { // watch it
+      console.log('Prop changed: ', newVal, ' | was: ', oldVal)
+      this.locations = [{
+        lat: this.latitude,
+        lng: newVal,
+        label: 'Frölunda'
+      }]
+      this.coordinates.lng = newVal
+      console.log(this.locations)
+    }
+  },
 
-  created() {
+  mounted() {
     this.$getLocation({})
       .then((coordinates) => {
         this.coordinates = coordinates
+        console.log(this.coordinates.lat)
+        this.locations = [
+          {
+            lat: this.coordinates.lat,
+            lng: this.coordinates.lng
+          }]
       })
       .catch((error) => alert(error))
   }

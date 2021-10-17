@@ -63,13 +63,18 @@ export default {
 </script>
 
 <style>
-
 #app {
-  font-family: 'Termina', Helvetica, Arial, sans-serif;
-  letter-spacing: -1px;
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  letter-spacing: 0.5px;
   text-align: center;
   color: #2c3e50;
 }
+.navbar-brand{
+  @import url(//db.onlinewebfonts.com/c/af66aa5680372d137e074a1ab91718ee?family=TerminaW05-Black);
+  font-family: TerminaW05-Black;
+  font-size: 1.4em !important;
+}
+
 </style>

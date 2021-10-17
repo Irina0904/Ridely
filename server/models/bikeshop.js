@@ -8,7 +8,10 @@ var bikeshopSchema = new Schema({
         street: String,
         zip_code: String},
     rating: {type: Number},
-    added_by: {type: Schema.Types.ObjectId, ref: 'users'}
+    added_by: { type: Schema.Types.ObjectId, ref: 'users' },
+    lat: { type: Number },
+    lng: { type: Number}
+
 
 }, 
 { collection: "bikeshops_collection" });
