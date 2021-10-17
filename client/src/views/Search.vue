@@ -12,7 +12,9 @@
     <b-button id="filter-button" variant="primary" v-b-toggle.collapse-2 class="m-1">Filter <font-awesome-icon icon="filter" /></b-button>&nbsp;
      <b-button id="add-location" variant="outline-success" class="my-2 my-sm-0" @click="showModal">Add
           <BIconPlusCircle/></b-button>&nbsp;&nbsp;
-          <b-button id="login-button" to="/login-panel" variant="success" class="my-2 my-sm-0">Login</b-button>
+          <b-button v-if="isLoggedIn == false" id="login-button" to="/login-panel" variant="success" class="my-2 my-sm-0">Login</b-button>
+          <b-button v-else id="logout-button" to="/home" variant="danger" class="my-2 my-sm-0">Logout</b-button>
+
   </b-navbar>
   <b-collapse id="collapse-2">
     <b-card class="col-2">
@@ -112,7 +114,11 @@ export default {
     'pumpstation-item': PumpstationItem,
     BIconPlusCircle
   },
-
+  created: function () {
+    if (this.$route.params._id) {
+      this.isLoggedIn = true
+    }
+  },
   mounted() {
     console.log('PAGE is loaded!')
     Api.get('http://localhost:3000/api/bikeshops')
@@ -198,7 +204,8 @@ export default {
       coordinates: {
         lat: 58,
         lng: 11
-      }
+      },
+      isLoggedIn: false
     }
   },
   methods: {
