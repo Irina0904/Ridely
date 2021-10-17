@@ -6,7 +6,10 @@ var bikeshopSchema = new Schema({
     address:{
         city: String,
         street: String,
-        zip_code: String},
+        zip_code: String,
+        lat: mongoose.Decimal128,
+        lng: mongoose.Decimal128
+        },
     rating: {type: Number},
     added_by: {type: Schema.Types.ObjectId, ref: 'users'}
 

@@ -3,14 +3,18 @@
     <div>
   <!-- As a link -->
   <b-navbar class="fixed-top" variant="dark" type="dark">
-    <b-navbar-brand to="/search">Ridely.</b-navbar-brand>
+    <a class="b-navbar-brand">
+      <b-navbar-brand to="/search">Ridely.</b-navbar-brand>
+      </a>
     <b-nav-form>
       <b-form-input class="mr-sm-2" input type="text" v-model="search"
       placeholder="Search"></b-form-input>
     </b-nav-form>
+    <div class="btn-group">
      <b-button variant="outline-success" class="my-2 my-sm-0" @click="showModal">Add
           <BIconPlusCircle/></b-button>&nbsp;&nbsp;
           <b-button to="/login-panel" variant="success" class="my-2 my-sm-0">Login</b-button>
+      </div>
   </b-navbar>
 </div>
 <div class="map">
@@ -30,15 +34,15 @@
       </b-form-group>
           </b-form>
       </div>
-      <b-button class="mt-3" variant="success" block @click="addLocation">Add</b-button>
-      <b-button class="mt-2" block @click="toggleModal">Cancel</b-button>
+      <b-button class="mt-3" id="add" variant="success" block @click="addLocation">Add</b-button>
+      <b-button class="mt-2" id="add" block @click="toggleModal">Cancel</b-button>
     </b-modal>
 </div>
 <div id="bikeshop" v-for="bikeshop in filteredBikeshops" v-bind:key="bikeshop._id">
             <bikeshop-item v-bind:bikeshop="bikeshop"/>
         </div>
          <div>
-    <p align="left">{{message}}</p>
+    <b-card id="card">{{message}}</b-card>
     </div>
         </div>
 </template>
@@ -114,7 +118,7 @@ export default {
             searchResults.push(bikeshop)
             this.message = ''
           } else if (searchResults.length === 0) {
-            this.message = 'Nothing found'
+            this.message = 'No Results'
           }
         })
       }
@@ -125,10 +129,12 @@ export default {
 }
 </script>
 <style scoped>
-p {
-    margin-left: 30px;
-    margin-right: auto;
-    margin-top: 20vh;
+.card {
+  font-size: 20px !important;
+  position: relative;
+  max-width: 20rem;
+  margin-left: 5px;
+  top: 60px;
 }
 .bikeshop{
   position: relative;
@@ -137,8 +143,17 @@ p {
 .map{
   margin-top: 55px;
   position: fixed;
-  width: 100%;
-  height: 90%;
+  width: 100% !important;
+  height: 90% !important;
+}
+
+@media screen and (max-width: 768) {
+  .map{
+    visibility: hidden !important;
+  }
+  .btn-group{
+    display: none !important;
+  }
 }
 
 </style>

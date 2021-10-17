@@ -8,7 +8,8 @@
   },
   "dependencies": {
     "vue-browser-geolocation": "^1.8.0",
-    "vue-google-login": "^2.0.5"
+    "vue-google-login": "^2.0.5",
+    "vue2-gmap-custom-marker": "^6.0.1"
   },
   "devDependencies": {
     "vue2-google-maps": "^0.10.7"
