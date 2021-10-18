@@ -10,11 +10,11 @@
       placeholder="Search"></b-form-input>
     </b-nav-form>
     <b-button id="filter-button" variant="primary" v-b-toggle.collapse-2 class="m-1">Filter <font-awesome-icon icon="filter" /></b-button>&nbsp;
-     <b-button id="add-location" variant="outline-success" class="my-2 my-sm-0" @click="showModal">Add
+     <b-button v-if="loggedIn()" id="add-location" variant="outline-success" class="my-2 my-sm-0" @click="showModal">Add
           <BIconPlusCircle/></b-button>&nbsp;&nbsp;
           <b-button v-if="loggedIn() === false" id="login-button" to="/login-panel" variant="success" class="my-2 my-sm-0">Login</b-button>
-          <b-button v-else id="logout-button" to="/search" variant="danger" class="my-2 my-sm-0">Logout</b-button>&nbsp;&nbsp;
-          <b-button v-if="loggedIn()" id="profile" to="/users/:_id" class="my-2 my-sm-0" >Profile</b-button>
+          <b-button v-else id="logout-button" to="/" variant="danger" class="my-2 my-sm-0">Logout</b-button>&nbsp;&nbsp;
+          <b-button v-if="loggedIn()" id="profile"  :to="{name: 'users', params: {_id: this.$route.params._id}}" class="my-2 my-sm-0" >Profile</b-button>
 
   </b-navbar>
   <b-collapse id="collapse-2">
