@@ -14,7 +14,7 @@
           <BIconPlusCircle/></b-button>&nbsp;&nbsp;
           <b-button v-if="isLoggedIn == false" id="login-button" to="/login-panel" variant="success" class="my-2 my-sm-0">Login</b-button>
           <b-button v-else id="logout-button" to="/login-panel" variant="danger" class="my-2 my-sm-0">Logout</b-button>&nbsp;&nbsp;
-          <b-button v-if="isLoggedIn == true" id="profile" to="/users/:_id" class="my-2 my-sm-0" >Profile</b-button>
+          <b-button v-if="isLoggedIn == true" id="profile" :to="{name: 'users', params: {_id: this.$route.params._id}}" class="my-2 my-sm-0" >Profile</b-button>
 
   </b-navbar>
   <b-collapse id="collapse-2">

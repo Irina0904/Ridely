@@ -33,7 +33,7 @@ export default new Router({
       component: CreateAccount
     },
     {
-      path: '/search',
+      path: '/',
       name: 'search',
       component: Search
     },
