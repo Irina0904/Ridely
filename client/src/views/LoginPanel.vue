@@ -22,10 +22,11 @@
           <div class="field">
             <label class="label">Password</label>
             <div class="control">
-              <input v-model="password" v:bind:key="password" class="login-input" type="password" placeholder="Your password">
+              <input v-model="password" v-on:keyup.enter="Submit()" v:bind:key="password" class="login-input" type="password" placeholder="Your password">
             </div>
           </div>
-          <br><b-button type="submit" variant="outline-success" v-on:click="Submit()">Login</b-button>
+
+          <br><b-button type="submit" variant="outline-success" @click="Submit()">Login</b-button>
           </section>
     </section><p>
       {{ response }}</p>
