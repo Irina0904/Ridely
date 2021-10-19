@@ -78,4 +78,4 @@ Our web app's overall scope is based on community driven initiative, where users
 
 ## Teaser (MS3)
 
-![Teaser](./Frame_9__3_.png)
+![Teaser](./Frame_9__2_.png)
