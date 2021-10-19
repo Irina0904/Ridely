@@ -13,7 +13,7 @@ var bp = require('body-parser');
 mongoose.set('returnOriginal', false);
 
 // Variables
-var mongoURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/animalDevelopmentDB';
+var mongoURI = process.env.MONGODB_URI || 'mongodb+srv://IriLev0904:Tuborg2002@cluster0.nkjyt.mongodb.net/WebProject?retryWrites=true&w=majority'
 var port = process.env.PORT || 3000;
 
 // Connect to MongoDB

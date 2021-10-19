@@ -21,19 +21,19 @@
         <div class="form-row justify-content-center">
           <form class="form-horizontal" role="form">
               <div class="form-group">
-              <label class="col-lg-3 control-label">Forename</label>
+              <label class="col-lg-3 control-label">First name</label>
               <div class="col-lg-8 mx-auto">
               <input v-model="user.firstName" class="form-control" type="text" value='first name'>
               </div>
               </div>
               <div class="form-group">
-              <label class="col-lg-3 control-label">Surname</label>
+              <label class="col-lg-3 control-label">Last name</label>
               <div class="col-lg-8 mx-auto">
                 <input v-model="user.lastName"  class="form-control" type="text" value="last name">
               </div>
             </div>
             <div class="form-group">
-              <label class="col-lg-3 control-label" value="email">Mail</label>
+              <label class="col-lg-3 control-label" value="email">Email</label>
               <div class="col-lg-8 mx-auto">
                 <input v-model="user.email" class="form-control" type="text" value="">
               </div>
