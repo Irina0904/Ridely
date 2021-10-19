@@ -2,23 +2,27 @@
   <div>
     <div>
   <!-- As a link -->
-
-  <b-navbar variant="dark" type="dark">
-    <b-navbar-brand to="/search">Ridely.</b-navbar-brand>
+  <div>
+  <b-navbar toggleable="md" variant="dark" type="dark">
+    <b-navbar-brand to="/">Ridely.</b-navbar-brand>
+    <b-navbar-toggle class="mb-2" target="nav-collapse"></b-navbar-toggle>
     <b-nav-form>
       <b-form-input class="mr-sm-2" input type="text" v-model="search"
       placeholder="Search"></b-form-input>
+      <b-button id="filter-button" variant="primary" v-b-toggle.collapse-2  >Filter <font-awesome-icon icon="filter" /></b-button>&nbsp;
     </b-nav-form>
-    <b-button id="filter-button" variant="primary" v-b-toggle.collapse-2 class="m-1">Filter <font-awesome-icon icon="filter" /></b-button>&nbsp;
+    <b-collapse align="left" id="nav-collapse" is-nav>
      <b-button v-if="loggedIn()" id="add-location" variant="outline-success" class="my-2 my-sm-0" @click="showModal">Add
-          <BIconPlusCircle/></b-button>&nbsp;&nbsp;
+          <BIconPlusCircle/></b-button>&nbsp;
           <b-button v-if="loggedIn() === false" id="login-button" to="/login-panel" variant="success" class="my-2 my-sm-0">Login</b-button>
-          <b-button v-else id="logout-button" to="/" variant="danger" class="my-2 my-sm-0">Logout</b-button>&nbsp;&nbsp;
+          <b-button v-else id="logout-button" to="/" variant="danger" class="my-2 my-sm-0">Logout</b-button>&nbsp;
           <b-button v-if="loggedIn()" id="profile"  :to="{name: 'users', params: {_id: this.$route.params._id}}" class="my-2 my-sm-0" >Profile</b-button>
+    </b-collapse>
 
   </b-navbar>
+  </div>
   <b-collapse id="collapse-2">
-    <b-card class="col-2">
+    <b-card align="left">
     <b-form-checkbox-group
       v-model="filterSelected"
       :options="filterOptions"
@@ -465,13 +469,17 @@ p {
   height: 90% !important;
 }
 @media screen and (max-width: 600px) {
-  .my-2
-    { display: none;}
+  #filter-button{
+    margin-top: 7px !important;
+  }
+
 }
 
 @media screen and (max-width: 400px) {
   .overflow-auto
-    { display: none;}
+    { overflow-x: auto !important;
+    overflow-y: hidden;
+    height:30vh !important;}
 }
 
 .bikeshop{
@@ -490,7 +498,7 @@ p {
 div.overflow-auto {
   width: 240px;
   height:90vh;
-  overflow: auto;
+  overflow-x: scroll;
   border: none;
   position: fixed;
 }

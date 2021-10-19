@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <b-row class="justify-content-sm-center mt-5 ml-4">
+    <div class="justify-content-lg-center m-3">
+        <b-row>
   <b-card
     style="width: 15rem;"
     class="mb-2"
